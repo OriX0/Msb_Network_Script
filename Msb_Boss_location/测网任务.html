@@ -1,0 +1,3102 @@
+<!DOCTYPE html>
+<!-- saved from url=(0287)https://vip.meishubao.com/admin/network_task.html?id=3962121&task_list_datetime=2020-12-01%20-%202020-12-02&task_list_datetime_sub=&task_list_key=&change_datetime=&change_datetime_sub=&task_status%5B%5D=1&task_status%5B%5D=2&task_status%5B%5D=3&task_status%5B%5D=4&task_status%5B%5D=all& -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="renderer" content="webkit" />
+
+    <title>测网任务</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://imgvip.meishubao.com/vip/www/favicon.ico" />
+    <link rel="stylesheet" href="./测网任务_files/bootstrap.min.css" />
+    <link rel="stylesheet" href="./测网任务_files/main.css" />
+    <link rel="stylesheet" href="./测网任务_files/material-icons.css" />
+    <!--<link rel="stylesheet" href="{$configure.app.css}style.css?{$configure.vercode}" />-->
+    <link rel="stylesheet" href="./测网任务_files/alertify.core.css" />
+    <link rel="stylesheet" href="./测网任务_files/alertify.default.css" />
+    <script type="text/javascript">
+      var _root = '/admin/',
+        _curr =
+          '/admin/network_task.html?id=3962121&task_list_datetime=2020-12-01%20-%202020-12-02&task_list_datetime_sub=&task_list_key=&change_datetime=&change_datetime_sub=&task_status%5B%5D=1&task_status%5B%5D=2&task_status%5B%5D=3&task_status%5B%5D=4&task_status%5B%5D=all&',
+        _referer =
+          'https://vip.meishubao.com/admin/network_task.html?id=3962121&task_list_datetime=2020-12-02&task_list_datetime_sub=&task_list_key=&change_datetime=&change_datetime_sub=&task_status%5B%5D=1&task_status%5B%5D=2&task_status%5B%5D=3&task_status%5B%5D=4&task_status%5B%5D=all&',
+        _pret = '';
+    </script>
+    <script src="./测网任务_files/jquery.min.js.下载"></script>
+    <script src="./测网任务_files/popper.min.js.下载"></script>
+    <script src="./测网任务_files/bootstrap.min.js.下载"></script>
+    <script></script>
+    <script>
+      function consoleajax() {
+        $.ajax({
+          url: '/admin/u_mybook_now',
+          type: 'post',
+          async: false,
+          dateType: 'json',
+          success: function (data) {
+            if (data.status == 0) {
+              console.log(data);
+              layer.open({
+                type: 1,
+                title: '实时工作台',
+                skin: 'layui-layer-demo', //样式类名
+                closeBtn: 1, //不显示关闭按钮
+                area: ['720px', 'auto'],
+                anim: 2,
+                shadeClose: true, //开启遮罩关闭
+                content:
+                  `
+              <div>
+                <div class="card border-0 mb-2">
+                  <div class="card-header p-0 pt-1 pb-1 row m-0">
+                    <div class="col">
+                      <span style="font-size:16px;">今日外呼数据</span>
+                    </div>
+                  </div>
+                  <div class="card-body p-0 bg-white">
+                    <div class="form-row justify-content-end m-0 p-0">
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>总外呼数:</span>
+                        <a target="_blank" href="u_call_record?ctime=` +
+                  data.today +
+                  `%20-%20` +
+                  data.today +
+                  `&sales[]=` +
+                  data.cc_id +
+                  `&c_type[]=4">` +
+                  data.call.callNum +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>已接听数:</span>
+                        <a target="_blank" href="u_call_record?ctime=` +
+                  data.today +
+                  `%20-%20` +
+                  data.today +
+                  `&sales[]=` +
+                  data.cc_id +
+                  `&c_status[]=33&c_type[]=4">` +
+                  data.call.jieting +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>平均通时:</span>
+                        <span>` +
+                  data.call.avgTime +
+                  `</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>总通时:</span>
+                        <span>` +
+                  data.call.totalTime +
+                  `</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card border-0 mb-2">
+                  <div class="card-header p-0 pt-1 pb-1 row m-0">
+                    <div class="col">
+                      <span style="font-size:16px;">今日待办及进度</span>
+                    </div>
+                  </div>
+                  <div class="card-body p-0 bg-white">
+                    <div class="form-row justify-content-start m-0 p-0">
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>今日新分配:</span>
+                        <a target="_blank" href="u_userinfo.html?reg=0&ect=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&sales%5B%5D=` +
+                  data.cc_id +
+                  `&lockrec=0">` +
+                  data.todaySchedule.new +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red;">新分配未跟:</span>
+                        <a target="_blank" href="u_userinfo.html?fs%5B%5D=2&reg=0&ect=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.todaySchedule.new_not_follow +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red;">转介绍未跟:</span>
+                        <a target="_blank" href="u_userinfo.html?fs%5B%5D=2&reg=0&channelc%5B%5D=2&channelc%5B%5D=7&channelc%5B%5D=10&channelc%5B%5D=11&channelc%5B%5D=12&channelc%5B%5D=20&channelc%5B%5D=21&ect=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&sales%5B%5D=` +
+                  data.cc_id +
+                  `&lockrec=0">` +
+                  data.todaySchedule.zhuan_not_follow +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>今日预到货:</span>
+                        <a target="_blank" href="u_userinfo.html?ids=` +
+                  data.todaySchedule.express_today_uid +
+                  `">` +
+                  data.todaySchedule.express_today +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>今日待回访:</span>
+                        <a target="_blank" href="u_userinfo.html?sales%5B%5D=` +
+                  data.cc_id +
+                  `&nr_time=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `">` +
+                  data.todaySchedule.today_need_call +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>未联系流转:</span>
+                        <a target="_blank" href="javascript:;">` +
+                  data.no_follow +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>未出席流转:</span>
+                        <a target="_blank" href="javascript:;">` +
+                  data.no_come +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>未成单流转:</span>
+                        <a target="_blank" href="javascript:;">` +
+                  data.no_pay +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>已安排发货:</span>
+                        <a target="_blank" href="u_express_new.html?sales[]=` +
+                  data.cc_id +
+                  `&ctime=` +
+                  data.today +
+                  `">` +
+                  data.todaySchedule.express_go +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>已邀约试听:</span>
+                        <a target="_blank" href="u_userinfo.html?reg=0&sales%5B%5D=` +
+                  data.cc_id +
+                  `&lockrec=0&b_lesson_time=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `">` +
+                  data.todaySchedule.need_shiting +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>已试听出席:</span>
+                        <a target="_blank" href="u_userinfo.html?reg=0&sales%5B%5D=` +
+                  data.cc_id +
+                  `&lockrec=0&f_lesson_time=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&ls%5B%5D=2">` +
+                  data.todaySchedule.come_shiting +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red;">已开单:</span>
+                        <a target="_blank" href="u_pay.html?act=list&team=0&buytime=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&courseplan=0&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.todaySchedule.order_count +
+                  `</a>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>缴费金额:</span>
+                        <span>` +
+                  data.todaySchedule.order_money +
+                  `</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card border-0 mb-2">
+                  <div class="card-header p-0 pt-1 pb-1 row m-0">
+                    <div class="col">
+                      <span style="font-size:16px;">今日试听课安排</span>
+                    </div>
+                  </div>
+                  <div class="card-body p-0 bg-white">
+                    <div class="form-row justify-content-end m-0 p-0">
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red">今日试听课:</span>
+                        <a target="_blank" href="u_lesson.html?ltm=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&team=0&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.plan.today.num +
+                  `</a>
+                        <span style="color:red">节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red">待设备调试:</span>
+                        <a target="_blank" href="u_userinfo.html?flow_plan_f%5B%5D=1&flow_plan_f%5B%5D=2&flow_plan_f%5B%5D=3&flow_plan_f%5B%5D=4&reg=0&sales%5B%5D=` +
+                  data.cc_id +
+                  `&lockrec=0&f_lesson_time=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&ls%5B%5D=1&fs[]=4">` +
+                  data.plan.today.device +
+                  `</a>
+                        <span style="color:red">节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red">未匹配老师:</span>
+                        <a target="_blank" href="u_lesson.html?tea=1&ltm=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&team=0&lst%5B%5D=1&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.plan.today.no_teacher +
+                  `</a>
+                        <span style="color:red">节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red">未确认出席:</span>
+                        <a target="_blank" href="u_userinfo.html?flow_plan_f%5B%5D=1&flow_plan_f%5B%5D=2&flow_plan_f%5B%5D=3&flow_plan_f%5B%5D=4&flow_plan_f%5B%5D=5&flow_plan_f%5B%5D=6&reg=0&sales%5B%5D=` +
+                  data.cc_id +
+                  `&lockrec=0&f_lesson_time=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&ls%5B%5D=1&fs[]=4">` +
+                  data.plan.today.leave +
+                  `</a>
+                        <span style="color:red">节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>待上/进行中:</span>
+                        <a target="_blank" href="u_lesson.html?ltm=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&team=0&lst%5B%5D=1&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.plan.today.loading +
+                  `</a>
+                        <span>节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>已取消:</span>
+                        <a target="_blank" href="u_lesson.html?ltm=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&team=0&lst%5B%5D=4&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.plan.today.cancel +
+                  `</a>
+                        <span>节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>已出席:</span>
+                        <a target="_blank" href="u_lesson.html?ltm=` +
+                  data.today +
+                  `+-+` +
+                  data.today +
+                  `&team=0&lst%5B%5D=2&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.plan.today.done +
+                  `</a>
+                        <span>节</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card border-0 mb-2">
+                  <div class="card-header p-0 pt-1 pb-1 row m-0">
+                    <div class="col">
+                      <span style="font-size:16px;">明日试听课安排</span>
+                    </div>
+                  </div>
+                  <div class="card-body p-0 bg-white">
+                    <div class="form-row justify-content-end m-0 p-0">
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red">今日试听课:</span>
+                        <a target="_blank" href="u_lesson.html?ltm=` +
+                  data.tomorrow +
+                  `+-+` +
+                  data.tomorrow +
+                  `&team=0&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.plan.tomorrow.num +
+                  `</a>
+                        <span style="color:red">节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red">待设备调试:</span>
+                        <a target="_blank" href="u_userinfo.html?flow_plan_f%5B%5D=1&flow_plan_f%5B%5D=2&flow_plan_f%5B%5D=3&flow_plan_f%5B%5D=4&reg=0&sales%5B%5D=` +
+                  data.cc_id +
+                  `&lockrec=0&f_lesson_time=` +
+                  data.tomorrow +
+                  `+-+` +
+                  data.tomorrow +
+                  `&ls%5B%5D=1&fs[]=4">` +
+                  data.plan.tomorrow.device +
+                  `</a>
+                        <span style="color:red">节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red">未匹配老师:</span>
+                        <a target="_blank" href="u_lesson.html?tea=1&ltm=` +
+                  data.tomorrow +
+                  `+-+` +
+                  data.tomorrow +
+                  `&team=0&lst%5B%5D=1&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.plan.tomorrow.no_teacher +
+                  `</a>
+                        <span style="color:red">节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span style="color:red">未确认出席:</span>
+                        <a target="_blank" href="u_userinfo.html?flow_plan_f%5B%5D=1&flow_plan_f%5B%5D=2&flow_plan_f%5B%5D=3&flow_plan_f%5B%5D=4&flow_plan_f%5B%5D=5&flow_plan_f%5B%5D=6&reg=0&sales%5B%5D=` +
+                  data.cc_id +
+                  `&lockrec=0&f_lesson_time=` +
+                  data.tomorrow +
+                  `+-+` +
+                  data.tomorrow +
+                  `&ls%5B%5D=1&fs[]=4">` +
+                  data.plan.tomorrow.leave +
+                  `</a>
+                        <span style="color:red">节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>待上/进行中:</span>
+                        <a target="_blank" href="u_lesson.html?ltm=` +
+                  data.tomorrow +
+                  `+-+` +
+                  data.tomorrow +
+                  `&team=0&lst%5B%5D=1&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.plan.tomorrow.loading +
+                  `</a>
+                        <span>节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>已取消:</span>
+                        <a target="_blank" href="u_lesson.html?ltm=` +
+                  data.tomorrow +
+                  `+-+` +
+                  data.tomorrow +
+                  `&team=0&lst%5B%5D=4&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.plan.tomorrow.cancel +
+                  `</a>
+                        <span>节</span>
+                      </div>
+                      <div class="col-3 m-0 pl-2 mt-2 mb-2 justify-content-start">
+                        <span>已出席:</span>
+                        <a target="_blank" href="u_lesson.html?ltm=` +
+                  data.tomorrow +
+                  `+-+` +
+                  data.tomorrow +
+                  `&team=0&lst%5B%5D=2&sales%5B%5D=` +
+                  data.cc_id +
+                  `">` +
+                  data.plan.tomorrow.done +
+                  `</a>
+                        <span>节</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>`,
+              });
+            }
+          },
+        });
+      }
+    </script>
+    <link rel="stylesheet" href="./测网任务_files/layer.css" id="layui_layer_skindefaultlayercss" style="" />
+  </head>
+  <body class="page pageadmin" style="">
+    <style>
+      div.page {
+        min-height: 101%;
+        background: #f2f2f2;
+      }
+      div.body > header {
+        min-height: 50px;
+      }
+      div.body > header > nav.d-flex {
+        min-height: 50px;
+      }
+
+      div.container {
+        max-width: 100%;
+      }
+
+      /* div.section {
+    margin-left: 140px;
+    width: calc(100% - 140px);
+} */
+
+      div.form-group.invalid {
+        color: red;
+      }
+      div.form-row.invalid {
+        border-bottom-color: red !important;
+      }
+      textarea.autoheight {
+        overflow: hidden;
+        min-height: 36px;
+      }
+
+      .autocomplete-suggestions {
+        text-align: right;
+        max-height: 100px !important;
+        overflow: hidden;
+        overflow-y: auto;
+      }
+
+      div.mainfoot .btnscon span.clear {
+        display: none;
+      }
+      div.mainfoot .btnscon span.today {
+        display: none;
+      }
+
+      .r10 {
+        border-radius: 10px !important;
+      }
+      .text-decoration {
+        text-decoration: line-through;
+      }
+    </style>
+    <div class="page pageadmin">
+      <style type="text/css">
+        #network p {
+          margin-bottom: 5px;
+        }
+
+        #network ul {
+          padding: 0px;
+        }
+
+        #network li {
+          list-style: none;
+          border-radius: 3px;
+          border: 1px solid #c0c0c0;
+        }
+
+        #network li:hover {
+          border-color: #5bc0de;
+        }
+
+        .network_task {
+          border: 1px solid #0a4d85;
+          padding: 10px;
+          margin: 10px 0px;
+        }
+
+        #network_task_org_modal li {
+          list-style: none;
+        }
+
+        .btn_m {
+          margin: 3px;
+        }
+
+        .network_task_uhead {
+          width: 79px;
+          height: 80px;
+          border-radius: 50%;
+        }
+      </style>
+
+      <style>
+        .dropdown-menu {
+          max-height: 600px;
+          overflow: auto;
+        }
+        .linkBtn {
+          position: fixed;
+          width: 48px;
+          bottom: 20px;
+          right: 0;
+          z-index: 99999;
+          display: none;
+        }
+        .proBtn {
+          width: 100%;
+        }
+        .fkBtn {
+          position: fixed;
+          right: 0px;
+          bottom: 74px;
+          width: 24px;
+          cursor: pointer;
+        }
+      </style>
+
+      <header>
+        <div class="linkBtn" style="display: block">
+          <a target="_blank" href="https://wj.qq.com/s2/6780256/427c">
+            <img class="proBtn" src="./测网任务_files/linkCP.png" />
+          </a>
+          <img class="fkBtn" src="./测网任务_files/closeFK.png" />
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top s" style="">
+          <a
+            class="navbar-brand"
+            href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01%20-%202020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B%5D=1&amp;task_status%5B%5D=2&amp;task_status%5B%5D=3&amp;task_status%5B%5D=4&amp;task_status%5B%5D=all&amp;#"
+          >
+            BOSS
+          </a>
+          <button
+            class="navbar-toggler btn-sm"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01%20-%202020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B%5D=1&amp;task_status%5B%5D=2&amp;task_status%5B%5D=3&amp;task_status%5B%5D=4&amp;task_status%5B%5D=all&amp;#"
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  课表管理
+                </a>
+                <div class="dropdown-menu wauto r0">
+                  <a href="https://vip.meishubao.com/admin/u_pay.html?act=putlist" class="dropdown-item">上课记录</a>
+                </div>
+              </li>
+              <!-- <li class="nav-item">
+                  <a href="u_user_calendar.html" class="nav-link">上课日历</a>
+                </li>
+                <li class="nav-item">
+                  <a href="u_user_reserve.html" class="nav-link">约课日历</a>
+                </li>
+                <li class="nav-item">
+                  <a href="u_user_reserveex.html" class="nav-link">约课查询</a>
+                </li> -->
+              <!-- <li class="nav-item border-bottom">
+                    <a href="u_countchannel.html" class="nav-link rounded-0 select-link">渠道数据</a>
+                </li> -->
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="https://vip.meishubao.com/admin/network_task.html?task_status%5B%5D=1&amp;task_list_datetime=2020-12-02&amp;task_datetime=2020-12-02"
+                >
+                  测网任务
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  target="_blank"
+                  href="https://vip.meishubao.com/admin/classmonitoring#/ClassMonitoring/index"
+                  class="nav-link"
+                >
+                  课堂监控
+                </a>
+              </li>
+              <!-- 工单系统 -->
+              <!-- 组员是非超管(admin=0) 组长和主管是超管(admin=1)-->
+              <li class="nav-item dropdown">
+                <!-- <a href="u_refund.html" class="nav-link"></a> -->
+                <a
+                  href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01%20-%202020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B%5D=1&amp;task_status%5B%5D=2&amp;task_status%5B%5D=3&amp;task_status%5B%5D=4&amp;task_status%5B%5D=all&amp;#"
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  工单管理
+                  <span class="badge badge-pill badge-info gdManage"></span>
+                </a>
+                <div class="dropdown-menu wauto r0">
+                  <a href="https://vip.meishubao.com/admin/myWorkOrder" class="dropdown-item">我的工单</a>
+                </div>
+              </li>
+            </ul>
+            <ul class="navbar-nav my-2 my-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="https://vip.meishubao.com/admin/u_admin_msg.html">
+                  消息
+                  <span class="badge badge-pill badge-info unmsgnum"></span>
+                </a>
+              </li>
+
+              <!--
+                              -->
+
+              <!--
+                              -->
+
+              <li class="nav-item dropdown">
+                <a
+                  href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01%20-%202020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B%5D=1&amp;task_status%5B%5D=2&amp;task_status%5B%5D=3&amp;task_status%5B%5D=4&amp;task_status%5B%5D=all&amp;#"
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  杭州IT-郑晨晓
+                </a>
+                <div class="dropdown-menu dropdown-menu-right wauto r0">
+                  <a class="dropdown-item" href="https://vip.meishubao.com/admin/buildposter?mobile=18058405526">
+                    我的推广页
+                  </a>
+                  <a class="dropdown-item" href="https://imgvip.meishubao.com/vip/download/chrome_installer.exe">
+                    下载浏览器
+                  </a>
+                  <span class="dropdown-item">ID：3962121</span>
+                  <div class="dropdown-divider"></div>
+                  <a
+                    class="dropdown-item"
+                    href="https://vip.meishubao.com/admin/login.html?logout&amp;ret=/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01%20-%202020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B%5D=1&amp;task_status%5B%5D=2&amp;task_status%5B%5D=3&amp;task_status%5B%5D=4&amp;task_status%5B%5D=all&amp;"
+                  >
+                    退出
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <script>
+        (function () {
+          var host = window.location.host;
+          var arrangeUrl = '';
+          if (host == 'vip.meishubao.com') {
+            arrangeUrl = `https://boss.meishubao.com/eas/orderClass/inviteSchedule`;
+          } else if (host == 'vip121.meishubao.com') {
+            arrangeUrl = `https://fe-pre128-eas.17weixiao.net/eas/orderClass/inviteSchedule`;
+          } else {
+            arrangeUrl = `https://fe-qa128-eas.17weixiao.net/eas/orderClass/inviteSchedule`;
+          }
+          $('#arrangeId').attr('href', arrangeUrl);
+          switch (host) {
+            case 'vip.meishubao.com':
+              //不走createCookie
+              break;
+            case 'vip-alpha.meishubao.com':
+              //不走createCookie
+              break;
+            default:
+              createCookie();
+          }
+          console.log('createCookie');
+          function createCookie() {
+            var _scookie = document.createElement('script');
+            _scookie.src = `https://cookie.17weixiao.net/setcookie?kv=${document.cookie.match(/PHPSESSID=\w+/)[0]};`;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(_scookie, s);
+          }
+        })();
+        $(function () {
+          var Feedback = sessionStorage.getItem('Feedback');
+          Feedback == 'no' ? $('.linkBtn').hide() : $('.linkBtn').show();
+          $('.fkBtn').click(function () {
+            sessionStorage.setItem('Feedback', 'no');
+            $('.linkBtn').hide();
+          });
+          function getGDNum() {
+            let data = { businessId: 1, status: 1, type: 2, userId: '3962121' };
+            $.ajax({
+              url: '/work/order/statistics',
+              data: JSON.stringify(data),
+              type: 'post',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              dataType: 'json',
+            }).done(function (res) {
+              if (res.status == 0) {
+                res.data.handleMeNumber > 0 ? $('.gdManage').html(res.data.handleMeNumber) : '';
+              }
+            });
+          }
+          getGDNum();
+
+          function getMasterWork() {
+            let data = { master_ids: '[3962121]' };
+            $.ajax({
+              url: '/eduapi/web/edu/masterwork',
+              data: JSON.stringify(data),
+              type: 'post',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              dataType: 'json',
+            }).done(function (res) {
+              console.log(res);
+              if (res.status == 0) {
+                res.data.parents_class_total > 0 ? $('.workMaster').html(res.data.parents_class_total) : '';
+              }
+            });
+          }
+
+          getMasterWork();
+        });
+      </script>
+      <link type="text/css" rel="stylesheet" href="./测网任务_files/jedate.css" />
+      <div class="body">
+        <div id="network" class="container" style="height: auto; margin: 32px 0px; padding-top: 20px">
+          <div class="row">
+            <div class="col-3" style="border-right: 3px solid #ccc">
+              <label for="" class="col-md-12" style="margin: 15px 0px">待领取任务列表</label>
+              <div style="text-align: center">
+                <button class="btn btn-primary task_receive" style="padding: 0.375rem 3rem">领取</button>
+              </div>
+            </div>
+            <div class="col-9">
+              <div style="margin: 15px 0px">任务列表</div>
+
+              <style>
+                .notice-it-box {
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                }
+                #network_task {
+                  position: relative;
+                }
+              </style>
+              <link rel="stylesheet" href="./测网任务_files/daterangepicker-bs3.css" />
+              <div class="form-horizontal" id="network_task">
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="col-md-2">任务处理人</label>
+                    <input type="hidden" name="id" value="3962121" />
+                    <a href="javascript:void(0);" class="showOrgModal" id="select_member">杭州IT-郑晨晓</a>
+                    <div class="col-md-6">
+                      <div class="row">
+                        <input
+                          class="form-control col-md-6"
+                          type="text"
+                          name="task_list_datetime"
+                          value="2020-12-01 - 2020-12-02"
+                          placeholder="测网时间"
+                          style="margin-left: 20px"
+                        />
+                        <select
+                          name="task_list_datetime_sub"
+                          id=""
+                          class="form-control col-md-3"
+                          style="margin-left: 10px"
+                        >
+                          <option value="">全部</option>
+                          <option value="08:20 - 09:00">08:20 - 09:00</option>
+                          <option value="09:00 - 09:40">09:00 - 09:40</option>
+                          <option value="09:40 - 10:20">09:40 - 10:20</option>
+                          <option value="10:20 - 11:00">10:20 - 11:00</option>
+                          <option value="11:00 - 11:40">11:00 - 11:40</option>
+                          <option value="11:40 - 12:50">11:40 - 12:50</option>
+                          <option value="12:50 - 13:30">12:50 - 13:30</option>
+                          <option value="13:30 - 14:10">13:30 - 14:10</option>
+                          <option value="14:10 - 14:50">14:10 - 14:50</option>
+                          <option value="14:50 - 15:30">14:50 - 15:30</option>
+                          <option value="15:30 - 16:10">15:30 - 16:10</option>
+                          <option value="16:10 - 16:50">16:10 - 16:50</option>
+                          <option value="16:50 - 17:30">16:50 - 17:30</option>
+                          <option value="17:30 - 18:10">17:30 - 18:10</option>
+                          <option value="18:10 - 18:50">18:10 - 18:50</option>
+                          <option value="18:50 - 19:25">18:50 - 19:25</option>
+                          <option value="19:25 - 20:00">19:25 - 20:00</option>
+                          <option value="20:00 - 20:40">20:00 - 20:40</option>
+                          <option value="20:40 - 21:20">20:40 - 21:20</option>
+                          <option value="21:20 - 22:00">21:20 - 22:00</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="col-md-2">任务状态</label>
+                    <div class="checkbox">
+                      <label for="task_status_all" class="checkbox-inline" style="margin-right: 5px">
+                        <input
+                          id="task_status_all"
+                          type="checkbox"
+                          name="task_status[]"
+                          value="all"
+                          checked=""
+                          class="task_status_checkbox"
+                        />
+                        全部
+                      </label>
+                      <label for="task_status_1" class="checkbox-inline" style="margin-right: 5px">
+                        <input
+                          id="task_status_1"
+                          type="checkbox"
+                          name="task_status[]"
+                          value="1"
+                          checked=""
+                          class="task_status_checkbox"
+                        />
+                        处理中
+                      </label>
+                      <label for="task_status_2" class="checkbox-inline" style="margin-right: 5px">
+                        <input
+                          id="task_status_2"
+                          type="checkbox"
+                          name="task_status[]"
+                          value="2"
+                          checked=""
+                          class="task_status_checkbox"
+                        />
+                        已完成
+                      </label>
+                      <label for="task_status_3" class="checkbox-inline" style="margin-right: 5px">
+                        <input
+                          id="task_status_3"
+                          type="checkbox"
+                          name="task_status[]"
+                          value="3"
+                          checked=""
+                          class="task_status_checkbox"
+                        />
+                        已取消
+                      </label>
+                      <label for="task_status_4" class="checkbox-inline" style="margin-right: 5px">
+                        <input
+                          id="task_status_4"
+                          type="checkbox"
+                          name="task_status[]"
+                          value="4"
+                          checked=""
+                          class="task_status_checkbox"
+                        />
+                        已逾期
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="col-md-2">测网结果</label>
+                    <div class="checkbox">
+                      <label for="checked_status_all" class="checkbox-inline" style="margin-right: 5px">
+                        <input
+                          id="checked_status_all"
+                          type="checkbox"
+                          name="checked_status[]"
+                          value="all"
+                          class="checked_status_checkbox"
+                        />
+                        全部
+                      </label>
+                      <label for="checked_status_1" class="checkbox-inline" style="margin-right: 5px">
+                        <input
+                          id="checked_status_1"
+                          type="checkbox"
+                          name="checked_status[]"
+                          value="1"
+                          class="checked_status_checkbox"
+                        />
+                        测网不通过
+                      </label>
+                      <label for="checked_status_2" class="checkbox-inline" style="margin-right: 5px">
+                        <input
+                          id="checked_status_2"
+                          type="checkbox"
+                          name="checked_status[]"
+                          value="2"
+                          class="checked_status_checkbox"
+                        />
+                        测网通过
+                      </label>
+                      <label for="checked_status_4" class="checkbox-inline" style="margin-right: 5px">
+                        <input
+                          id="checked_status_4"
+                          type="checkbox"
+                          name="checked_status[]"
+                          value="4"
+                          class="checked_status_checkbox"
+                        />
+                        无法调试
+                      </label>
+                      <label for="checked_status_5" class="checkbox-inline" style="margin-right: 5px">
+                        <input
+                          id="checked_status_5"
+                          type="checkbox"
+                          name="checked_status[]"
+                          value="5"
+                          class="checked_status_checkbox"
+                        />
+                        改约时间
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="col-md-2">学生查询:</label>
+                    <input
+                      type="text"
+                      name="task_list_key"
+                      value=""
+                      class="form-control col-md-5"
+                      placeholder="学生姓名|学生手机|学生ID"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary btn-primary" id="task_list_submit">查询</button>
+                </div>
+                <!--<div class="notice-it-box">
+        <div class="form-group">
+            <label for="" class="control-label">消息通知</label>
+            <textarea name="notice_msg" value=""  class="form-control" id="" cols="30" rows="10" placeholder="请输入通知消息"></textarea>
+        </div>
+        <button class="btn btn-primary" id="notice-it-submit">通知</button>
+    </div>-->
+              </div>
+
+              <script src="./测网任务_files/moment.js.下载"></script>
+              <script src="./测网任务_files/daterangepicker.js.下载"></script>
+
+              <script type="application/javascript">
+                $('#network_task input[name=datetime]').daterangepicker({
+                  autoUpdateInput: false,
+                  locale: {
+                    format: 'YYYY-MM-DD',
+                  },
+                });
+                $('#network_task input[name=test_network_time]').daterangepicker({
+                  autoUpdateInput: false,
+                  locale: {
+                    format: 'YYYY-MM-DD',
+                  },
+                });
+                $('#network_task input[name=task_list_datetime]').daterangepicker({
+                  autoUpdateInput: true,
+                  locale: {
+                    format: 'YYYY-MM-DD',
+                  },
+                });
+
+                $('.task_status_checkbox').on('change', function () {
+                  selectAll($(this), '#task_status_all');
+                });
+                $('.checked_status_checkbox').on('change', function () {
+                  selectAll($(this), '#checked_status_all');
+                });
+
+                function selectAll($this, id) {
+                  if ($this.prop('checked')) {
+                    $this.prop('checked', true);
+                    if ($this.val() == 'all') {
+                      $this
+                        .parent()
+                        .siblings()
+                        .each(function (index, elem) {
+                          $(this).children('input').prop('checked', true);
+                        });
+                    } else {
+                      $flag = true;
+                      $this
+                        .parent()
+                        .siblings()
+                        .each(function (index, elem) {
+                          if ($(this).children('input').val() !== 'all' && !$(this).children('input').prop('checked')) {
+                            $flag = false;
+                          }
+                        });
+                      $(id).prop('checked', $flag);
+                    }
+                  } else {
+                    $this.prop('checked', false);
+                    if ($this.val() == 'all') {
+                      $this
+                        .parent()
+                        .siblings()
+                        .each(function (index, elem) {
+                          $(this).children('input').prop('checked', false);
+                        });
+                    } else {
+                      $(id).prop('checked', false);
+                    }
+                  }
+                }
+
+                $(document).on('click', '#notice-it-submit', function () {
+                  var noticeMsg = $('textarea[name=notice_msg]').val();
+                  if (!noticeMsg) {
+                    alertify.error('请输入通知内容');
+                    return;
+                  }
+                  $.post('network_task.html', { action: 'notice_msg', notice_msg: noticeMsg }, function (result) {
+                    var status = result.status;
+                    var msg = result.msg;
+                    if (status === 0) {
+                      alertify.success('通知成功');
+                    } else {
+                      alertify.error(msg);
+                    }
+                  });
+                });
+              </script>
+              <div style="padding: 10px">
+                <div>
+                  <span>当前全部结果：12</span>
+                </div>
+              </div>
+              <div>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>任务ID</th>
+                      <th>测网时间</th>
+                      <th>学生</th>
+                      <th>课程顾问</th>
+                      <th>测网客服</th>
+                      <th>测网结果</th>
+                      <th>任务状态</th>
+                      <th>最新日志记录</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>391266</td>
+                      <td>20-12-01 18:10</td>
+                      <td>
+                        <a href="https://vip.meishubao.com/admin/u_userinfo_home.html?id=4296015" target="_blank">
+                          格格 4296015
+                        </a>
+                      </td>
+                      <td>0</td>
+                      <td>杭州IT-郑晨晓 3962121</td>
+                      <td>无法调试</td>
+                      <td>已完成</td>
+                      <td>
+                        学生 (格格-4296015) 的测网任务被IT客服(杭州IT-郑晨晓-3962121) 完成, 学生设备：iPad,
+                        测网结果：无法调试-无人接听, 备注信息：无人接听 / 通话中
+                        无法调试，测网工单取消，如需测网请重新预约
+                      </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm btn_m network_task_detail" data-id="391266">
+                          任务详情
+                        </button>
+                        <button data-id="391266" class="btn btn-primary btn-sm btn_m network_task_edit">
+                          编辑测网报告
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>391276</td>
+                      <td>20-12-01 18:10</td>
+                      <td>
+                        <a href="https://vip.meishubao.com/admin/u_userinfo_home.html?id=4270711" target="_blank">
+                          嘟嘟 4270711
+                        </a>
+                      </td>
+                      <td>0</td>
+                      <td>杭州IT-郑晨晓 3962121</td>
+                      <td>无法调试</td>
+                      <td>已完成</td>
+                      <td>
+                        学生 (嘟嘟-4270711) 的测网任务被IT客服(杭州IT-郑晨晓-3962121) 完成, 学生设备：iPad,
+                        测网结果：无法调试-取消课程, 备注信息：说自己已经取消了 多次联系均未接
+                        无法调试，测网工单取消，如需测网请重新预约
+                      </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm btn_m network_task_detail" data-id="391276">
+                          任务详情
+                        </button>
+                        <button data-id="391276" class="btn btn-primary btn-sm btn_m network_task_edit">
+                          编辑测网报告
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>391281</td>
+                      <td>20-12-01 18:10</td>
+                      <td>
+                        <a href="https://vip.meishubao.com/admin/u_userinfo_home.html?id=4202818" target="_blank">
+                          小业 4202818
+                        </a>
+                      </td>
+                      <td>0</td>
+                      <td>杭州IT-郑晨晓 3962121</td>
+                      <td>无法调试</td>
+                      <td>已完成</td>
+                      <td>
+                        学生 (小业-4202818) 的测网任务被IT客服(杭州IT-郑晨晓-3962121) 完成, 学生设备：iPad,
+                        测网结果：无法调试-拒绝调试, 备注信息：之前调试过了 不用再调试了 今天也是用ipad的
+                        无法调试，测网工单取消，如需测网请重新预约
+                      </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm btn_m network_task_detail" data-id="391281">
+                          任务详情
+                        </button>
+                        <button data-id="391281" class="btn btn-primary btn-sm btn_m network_task_edit">
+                          编辑测网报告
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>391259</td>
+                      <td>20-12-01 18:50</td>
+                      <td>
+                        <a href="https://vip.meishubao.com/admin/u_userinfo_home.html?id=2889565" target="_blank">
+                          小语 2889565
+                        </a>
+                      </td>
+                      <td>0</td>
+                      <td>杭州IT-郑晨晓 3962121</td>
+                      <td>测网通过</td>
+                      <td>已完成</td>
+                      <td>
+                        学生 (小语-2889565) 的测网任务被IT客服(杭州IT-郑晨晓-3962121) 完成, 学生设备：PC笔记本,
+                        测网结果：测网通过, 备注信息：监课显示 师生已上课，摄像头、麦克风、扬声器，设备正常
+                      </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm btn_m network_task_detail" data-id="391259">
+                          任务详情
+                        </button>
+                        <button data-id="391259" class="btn btn-primary btn-sm btn_m network_task_edit">
+                          编辑测网报告
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>391291</td>
+                      <td>20-12-01 18:50</td>
+                      <td>
+                        <a href="https://vip.meishubao.com/admin/u_userinfo_home.html?id=4282205" target="_blank">
+                          宝贝 4282205
+                        </a>
+                      </td>
+                      <td>0</td>
+                      <td>杭州IT-郑晨晓 3962121</td>
+                      <td>无法调试</td>
+                      <td>已完成</td>
+                      <td>
+                        学生 (宝贝-4282205) 的测网任务被IT客服(杭州IT-郑晨晓-3962121) 完成, 学生设备：iPad,
+                        测网结果：无法调试-不能出席, 备注信息：小朋友或家里人生病了，无法参加
+                        无法调试，测网工单取消，如需测网请重新预约
+                      </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm btn_m network_task_detail" data-id="391291">
+                          任务详情
+                        </button>
+                        <button data-id="391291" class="btn btn-primary btn-sm btn_m network_task_edit">
+                          编辑测网报告
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>391311</td>
+                      <td>20-12-01 18:50</td>
+                      <td>
+                        <a href="https://vip.meishubao.com/admin/u_userinfo_home.html?id=4293117" target="_blank">
+                          Mango 4293117
+                        </a>
+                      </td>
+                      <td>0</td>
+                      <td>杭州IT-郑晨晓 3962121</td>
+                      <td>测网通过</td>
+                      <td>已完成</td>
+                      <td>
+                        学生 (Mango-4293117) 的测网任务被IT客服(杭州IT-郑晨晓-3962121) 完成, 学生设备：PC笔记本,
+                        测网结果：测网通过, 备注信息：笔记本，测网通过，客户端，摄像头，扬声器，麦克风，设备正常。
+                        网络波动 等会上课前重启路由器
+                      </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm btn_m network_task_detail" data-id="391311">
+                          任务详情
+                        </button>
+                        <button data-id="391311" class="btn btn-primary btn-sm btn_m network_task_edit">
+                          编辑测网报告
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="pt5 pb5 tc mt-2">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a
+                      class="page-link"
+                      href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01%20-%202020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B%5D=1&amp;task_status%5B%5D=2&amp;task_status%5B%5D=3&amp;task_status%5B%5D=4&amp;task_status%5B%5D=all&amp;#"
+                      onclick="return false;"
+                    >
+                      首页
+                    </a>
+                  </li>
+
+                  <li class="page-item disabled">
+                    <a
+                      class="page-link"
+                      href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01%20-%202020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B%5D=1&amp;task_status%5B%5D=2&amp;task_status%5B%5D=3&amp;task_status%5B%5D=4&amp;task_status%5B%5D=all&amp;#"
+                      onclick="return false;"
+                    >
+                      上一页
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a
+                      class="page-link active n b"
+                      href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01+-+2020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B0%5D=1&amp;task_status%5B1%5D=2&amp;task_status%5B2%5D=3&amp;task_status%5B3%5D=4&amp;task_status%5B4%5D=all&amp;page=0"
+                    >
+                      1
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a
+                      class="page-link n"
+                      href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01+-+2020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B0%5D=1&amp;task_status%5B1%5D=2&amp;task_status%5B2%5D=3&amp;task_status%5B3%5D=4&amp;task_status%5B4%5D=all&amp;page=1"
+                    >
+                      2
+                    </a>
+                  </li>
+
+                  <li class="page-item">
+                    <a
+                      class="page-link"
+                      href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01+-+2020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B0%5D=1&amp;task_status%5B1%5D=2&amp;task_status%5B2%5D=3&amp;task_status%5B3%5D=4&amp;task_status%5B4%5D=all&amp;page=1"
+                    >
+                      下一页
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a
+                      class="page-link"
+                      href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01+-+2020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B0%5D=1&amp;task_status%5B1%5D=2&amp;task_status%5B2%5D=3&amp;task_status%5B3%5D=4&amp;task_status%5B4%5D=all&amp;page=1"
+                    >
+                      末页
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 组织架构模态框 -->
+      <div id="network_task_org_modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">人员列表</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-4" style="border-right: 1px solid #ccc">
+                  <div id="network_task_team_con">
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span>IT客服</span>
+                    <ul>
+                      <li>暂无分组</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="input-group">
+                    <input type="text" name="u_admin_user_key" placeholder="员工姓名|员工ID" />
+                    <span class="input-group-btn">
+                      <button id="btn_u_admin_user_search" class="btn btn-primary" type="button">查询</button>
+                    </span>
+                  </div>
+                  <div class="network_task_u_admin" style="padding: 10px; border: 1px solid #cccccc; margin-top: 10px">
+                    <ul></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="input-block" style="float: left">
+                <input id="checked_me" type="checkbox" name="checked_me" value="1" />
+                <label for="checked_me">选择自己</label>
+              </div>
+              <button
+                id="btn_u_admin_checked"
+                type="button"
+                class="btn btn-primary"
+                data-type=""
+                data-id=""
+                data-priority=""
+                data-name=""
+                data-uid=""
+              >
+                确定
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 确认模态框 -->
+      <div id="receive_task_modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h5>确认领取？</h5>
+            </div>
+            <div class="modal-footer">
+              <button id="cancell_receive_task" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+              <button
+                id="confirm_receive_task"
+                data-id=""
+                data-type=""
+                data-uid=""
+                type="button"
+                class="btn btn-primary"
+              >
+                确定
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 测网任务详情 -->
+      <div id="network_task_detail_modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content" style="height: 500px; width: 900px; overflow: scroll">
+            <div class="modal-header">
+              <h4 class="modal-title">测网任务详情</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row" style="margin-bottom: 20px">
+                <div class="col-md-2 network_task_detail_user">
+                  <img
+                    src="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01%20-%202020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B%5D=1&amp;task_status%5B%5D=2&amp;task_status%5B%5D=3&amp;task_status%5B%5D=4&amp;task_status%5B%5D=all&amp;"
+                    alt=""
+                    class="network_task_uhead"
+                  />
+                  <p>
+                    ID:
+                    <span></span>
+                  </p>
+                  <p>
+                    <span></span>
+                    -
+                    <span></span>
+                  </p>
+                </div>
+                <div class="col-md-10">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="">任务ID:</label>
+                      <span class="network_task_detail_f1"></span>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="">任务状态:</label>
+                      <span class="network_task_detail_f2"></span>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="">测网客服:</label>
+                      <span class="network_task_detail_f3"></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="">学生使用设备:</label>
+                      <span class="network_task_detail_f4"></span>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="">建议测网时间:</label>
+                      <span class="network_task_detail_f5"></span>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="">任务创建人:</label>
+                      <span class="network_task_detail_f6"></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="">关联试听课ID:</label>
+                      <span class="network_task_detail_f7"></span>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="">试听上课时间:</label>
+                      <span class="network_task_detail_f8"></span>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="">课程顾问:</label>
+                      <span class="network_task_detail_f9"></span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="">测网结果:</label>
+                      <span class="network_task_detail_f10"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="margin-bottom: 20px">
+                <div class="col-md-12">
+                  <textarea
+                    name="network_log_content"
+                    value=""
+                    cols="30"
+                    rows="10"
+                    class="col-md-12 form-control"
+                    placeholder="添加日志..."
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row" style="margin-bottom: 20px; line-height: 38px">
+                <label for="" class="col-md-2">通知给:</label>
+                <div class="input-block col-md-2">
+                  <input id="notice_2cc" type="checkbox" name="notice_2cc" value="1" />
+                  <label for="notice_2cc">课程顾问</label>
+                </div>
+                <div class="input-block col-md-2">
+                  <input id="notice_2service" type="checkbox" name="notice_2service" value="2" />
+                  <label for="notice_2service">测网客服</label>
+                </div>
+                <button
+                  id="btn_network_log_add"
+                  data-id=""
+                  data-type=""
+                  data-uid=""
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  提交
+                </button>
+              </div>
+              <table class="table table-bordered network_logs">
+                <thead>
+                  <tr>
+                    <th>日志ID</th>
+                    <th>类型</th>
+                    <th>操作人</th>
+                    <th>被操作人</th>
+                    <th>日志内容</th>
+                    <th>通知人</th>
+                    <th>操作时间</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 编辑测网报告 -->
+      <div
+        id="network_task_edit_modal"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        style="display: none"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">测网任务报告</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="">测网任务ID:</label>
+                <span class="network_task_edit_f1">391266</span>
+              </div>
+              <div class="form-group">
+                <label for="">学生设备:</label>
+                <label class="checkbox-inline">
+                  <input id="equipment1" type="radio" name="equipment" value="1" />
+                  PC电脑
+                </label>
+                <label class="checkbox-inline">
+                  <input id="equipment2" type="radio" name="equipment" value="2" />
+                  MAC电脑
+                </label>
+                <label class="checkbox-inline">
+                  <input id="equipment3" type="radio" name="equipment" value="3" />
+                  PC笔记本
+                </label>
+                <label class="checkbox-inline">
+                  <input id="equipment4" type="radio" name="equipment" value="4" />
+                  MAC笔记本
+                </label>
+                <label class="checkbox-inline">
+                  <input id="equipment5" type="radio" name="equipment" value="5" />
+                  安卓PAD
+                </label>
+                <label class="checkbox-inline">
+                  <input id="equipment6" type="radio" name="equipment" value="6" />
+                  iPhone
+                </label>
+                <label class="checkbox-inline">
+                  <input id="equipment7" type="radio" name="equipment" value="7" />
+                  安卓手机
+                </label>
+                <label class="checkbox-inline">
+                  <input id="equipment8" type="radio" name="equipment" value="8" />
+                  iPad
+                </label>
+              </div>
+              <div class="form-group">
+                <label for="">测网结果:</label>
+              </div>
+              <div class="form-group">
+                <input id="test_status_2" type="radio" name="test_status" value="2" />
+                <label for="test_status_2">测网通过</label>
+              </div>
+              <div class="form-group">
+                <div class="row" style="margin-left: 0px">
+                  <label for="test_status_1" class="" style="margin-right: 20px">
+                    <input type="radio" id="test_status_1" name="test_status" value="1" />
+                    测网不通过
+                  </label>
+                  <select name="nopass_status" id="" class="form-control network_task_edit_f3 col-md-2">
+                    <option value="">请选择</option>
+                    <option value="6">麦克风</option>
+                    <option value="7">扬声器</option>
+                    <option value="8">摄像头</option>
+                    <option value="9">网络</option>
+                    <option value="10">设备限制</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row" style="margin-left: 0px">
+                  <label for="test_status_4" style="margin-right: 20px">
+                    <input id="test_status_4" type="radio" name="test_status" value="4" />
+                    无法调试
+                  </label>
+                  <select name="nopass_else_status" id="" class="form-control network_task_edit_f4 col-md-2">
+                    <option value="">请选择</option>
+                    <option value="23">取消课程</option>
+                    <option value="24">无人接听</option>
+                    <option value="25">家长拒接</option>
+                    <option value="26">不能出席</option>
+                    <option value="27">拒绝调试</option>
+                    <option value="28">CC调试</option>
+                    <option value="29">其他</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row" style="margin-left: 0px">
+                  <label for="test_status_5" style="margin-right: 20px">
+                    <input id="test_status_5" type="radio" name="test_status" value="5" />
+                    改约时间
+                  </label>
+                  <select name="change_datetime" id="" class="form-control col-md-2" style="margin-right: 20px">
+                    <option value="">请选择</option>
+                    <option value="2020-12-02">今天</option>
+                    <option value="2020-12-03">明天</option>
+                    <option value="2020-12-04">后天</option>
+                  </select>
+                  <select name="change_datetime_sub" id="" class="form-control col-md-2 network_task_edit_f5">
+                    <option value="">请选择</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="">备注说明：</label>
+                <textarea name="mark" value="" class="form-control" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                id="btn_network_task_edit_submit"
+                type="button"
+                class="btn btn-primary"
+                data-type=""
+                data-id="391266"
+              >
+                完成任务并提交报告
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 查看测网报告 -->
+      <div id="network_task_look" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">查看测网报告</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <label for="">测网任务ID:</label>
+                <span class="network_task_look_f1"></span>
+              </div>
+              <div class="row">
+                <label for="">学生设备:</label>
+                <span class="network_task_look_f2"></span>
+              </div>
+              <div class="row">
+                <label for="">测网结果:</label>
+                <span class="network_task_look_f3"></span>
+              </div>
+              <div class="row">
+                <label for="">备注说明：</label>
+                <span class="network_task_look_f4"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 放回任务 -->
+      <div id="put_back_task_modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">放回任务</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="">测网任务ID:</label>
+                <span class="network_put_back_f1"></span>
+              </div>
+              <div class="form-group">
+                <label for="">下次联系时间:</label>
+                <input type="text" name="next_contact_time" value="" class="form-control col-md-6" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary put_back_task_submit" data-type="" data-id="">
+                放回任务
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 测网额度 -->
+      <div id="network_task_limit_modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">测网任务额度</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <div class="row" style="margin-left: 0">
+                  <input type="text" name="batch_limit" value="" class="form-control col-md-3" />
+                  <button for="" class="btn btn-primary batch_input_btn">批量输入额度</button>
+                </div>
+              </div>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>时段</th>
+                    <th>额度</th>
+                    <th>今天(12月02日)</th>
+                    <th>明天(12月03日)</th>
+                    <th>后天(12月04日)</th>
+                  </tr>
+                </thead>
+                <tbody class="network_task_limit_tbody"></tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary network_task_limit_submit" data-type="" data-id="">
+                提交
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script type="text/javascript" src="./测网任务_files/jquery.jedate.js.下载"></script>
+      <script type="text/javascript" src="./测网任务_files/layer.js.下载"></script>
+
+      <script type="text/javascript">
+        var uri = 'network_task.html';
+        var current_uri = window.location.href;
+        $(document).on('click', '#btn_network_tasks', function () {
+          reload(current_uri, 'network_task');
+        });
+        $(document).on('click', '#task_list_submit', function () {
+          reload(current_uri, 'network_task_list');
+        });
+        var end = {
+          format: 'YYYY-MM-DD hh:mm',
+          isinitVal: true,
+          isTime: true,
+        };
+        $('#put_back_task_modal input[name=next_contact_time]').jeDate(end);
+        $('#network input[name=task_datetime]').daterangepicker({
+          autoUpdateInput: true,
+          locale: {
+            format: 'YYYY-MM-DD',
+          },
+        });
+
+        // 获取该分组下的组员
+        $(document).on('click', '.network_task_team', function () {
+          var id = $(this).data('id');
+          var type = $(this).data('type');
+          var network_task_team = $('#network_task_team_con').find('ul li');
+          var name = $(this).data('name');
+          $('#network_task input[name=id]').val('');
+          $('#network_task input[name=select_team]').val(id);
+          $('#btn_u_admin_checked').attr('data-type', type);
+          $('#btn_u_admin_checked').attr('data-uid', id);
+          $('#btn_u_admin_checked').attr('data-name', name);
+
+          network_task_team.each(function (index, elem) {
+            $(this).removeClass('network_seleted_team');
+            $(this).css({ background: 'none' });
+          });
+          $(this).addClass('network_seleted_team');
+          $(this).css({ background: '#ccc' });
+
+          removeUAdminUser();
+
+          $.post('network_task.html', { action: 'u_admin', teamid: id, key: '' }, function (result) {
+            var data = result.data;
+            if (data.length > 0) {
+              appendUAminUser(data);
+            }
+          });
+        });
+        // 选择人员后添加一个class标识，为下文做是否选择了用户做判断处理
+        $(document).on('click', '.u_admin_user', function () {
+          var u_admin_users = $('.network_task_u_admin').find('ul li');
+          var uid = $(this).data('id');
+          var name = $(this).data('name');
+          u_admin_users.each(function (index, elem) {
+            $(this).removeClass('u_admin_user_checked');
+            $(this).css({ background: 'none' });
+          });
+          $(this).addClass('u_admin_user_checked');
+          $(this).css({ background: '#ccc' });
+          $('#btn_u_admin_checked').attr('data-type', 'u_admin_selected');
+          $('#btn_u_admin_checked').attr('data-uid', uid);
+          $('#btn_u_admin_checked').attr('data-name', name);
+        });
+
+        $(document).on('click', '#btn_u_admin_user_search', function () {
+          var key = $('input[name=u_admin_user_key]').val();
+          if (!key) {
+            alertify.error('请输入人员姓名或id');
+            return false;
+          }
+          $.post('network_task.html', { action: 'u_admin', teamid: '', key: key }, function (result) {
+            var data = result.data;
+            if (result.count > 0) {
+              removeUAdminUser();
+              appendUAminUser(data);
+            }
+          });
+        });
+
+        // 组织架构多事件分发器
+        $(document).on('click', '#btn_u_admin_checked', function () {
+          var type = $(this).attr('data-type');
+          var id = $(this).attr('data-id');
+          var priority = $(this).attr('data-priority');
+          var name = $(this).attr('data-name');
+          var uid = $(this).attr('data-uid');
+
+          if (priority == 'task_2others' || priority == 'list_2others') {
+            $('#receive_task_modal').find('h5').html('确认指派？');
+            // 将id，type 赋值给确认模态框的属性
+            $('#confirm_receive_task').attr('data-id', id);
+
+            uid = '';
+            var u_admin_users = $('.network_task_u_admin').find('ul li');
+            u_admin_users.each(function (index, elem) {
+              if ($(this).hasClass('u_admin_user_checked')) {
+                uid = $(this).data('id');
+              }
+            });
+
+            if (!uid) {
+              alertify.error('请选择需要指派的组员');
+              return false;
+            }
+            if (priority == 'task_2others') {
+              $('#confirm_receive_task').attr('data-type', 'confirm_task_2other');
+            } else {
+              $('#confirm_receive_task').attr('data-type', 'confirm_list_2other');
+            }
+            $('#confirm_receive_task').attr('data-uid', uid);
+            $('#receive_task_modal').modal('show');
+          } else {
+            if (type == 'network_task_team') {
+              $('#network_task input[name=id]').remove();
+              $('#network_task').append("<input type='hidden' name='select_team' value='" + uid + "'>");
+              $('#select_member').html(name);
+            } else if (type == 'u_admin_selected') {
+              $('#network_task input[name=select_team]').remove();
+              $('#network_task').append("<input type='hidden' name='id' value='" + uid + "'>");
+              $('#select_member').html(name);
+            } else if ($('#network_task_org_modal input[name=checked_me]').is(':checked')) {
+              // 判断是否选择了自己，如果选择了自己，将过滤掉选择的其他人员
+              if ($('#network_task input[name=id]').val()) {
+                $('#network_task input[name=id]').val('3962121');
+              } else {
+                $('#network_task').append("<input type='hidden' name='id' value='3962121'>");
+              }
+              if ($('#network_task input[name=select_team]').val()) {
+                $('#network_task input[name=select_team]').remove();
+              }
+              $('#select_member').html('杭州IT-郑晨晓');
+            }
+            $('#network_task_org_modal').modal('hide');
+          }
+        });
+
+        $(document).on('change', '#checked_me', function () {
+          if ($(this).is(':checked')) {
+            $('#btn_u_admin_checked').attr('data-type', 'checked_me');
+          } else {
+            $('#btn_u_admin_checked').attr('data-type', '');
+          }
+        });
+
+        function removeUAdminUser() {
+          var network_task_u_admin = $('.network_task_u_admin');
+          network_task_u_admin.find('ul li').remove();
+        }
+
+        function appendUAminUser(data) {
+          var network_task_u_admin = $('.network_task_u_admin');
+          for (var i = 0; i < data.length; i++) {
+            var user =
+              '<li class="u_admin_user" data-id="' +
+              data[i].id +
+              '" data-name="' +
+              data[i].username +
+              '" style="cursor: pointer;">' +
+              data[i].username +
+              ' (' +
+              data[i].id +
+              ')' +
+              '</li>';
+            network_task_u_admin.find('ul').append(user);
+          }
+        }
+
+        //
+        function reload($uri, query) {
+          var url = '';
+          if (query) {
+            var tmp_obj = {
+              host: $uri.split('?')[0],
+            };
+            var checked_status = [];
+            var task_status = [];
+            $('#network input, checkbox, select').each(function (index, elem) {
+              var e = $(elem);
+              if (e.is('input')) {
+                if (e.attr('type') === 'checkbox' && e.attr('name') == 'checked_status[]') {
+                  if (e.is(':checked')) {
+                    checked_status[index] = $(this).val();
+                  }
+                } else if (e.attr('type') === 'checkbox' && e.attr('name') == 'task_status[]') {
+                  if (e.is(':checked')) {
+                    task_status[index] = $(this).val();
+                  }
+                } else {
+                  tmp_obj[e.attr('name')] = e.val();
+                }
+              } else if (
+                e.is('select') &&
+                e.attr('name') !== 'nopass_status' &&
+                e.attr('name') !== 'nopass_else_status'
+              ) {
+                tmp_obj[e.attr('name')] = e.val();
+              } else {
+              }
+            });
+            tmp_obj.checked_status = checked_status;
+            tmp_obj.checked_status.sort();
+            tmp_obj.task_status = task_status;
+            tmp_obj.task_status.sort();
+            var t = '';
+            Object.keys(tmp_obj).forEach(function (key) {
+              if (key != 'host') {
+                if (!tmp_obj[key]) {
+                  t += key + '=&';
+                } else {
+                  if ($.isArray(tmp_obj[key])) {
+                    for (var j = 0; j < tmp_obj[key].length; j++) {
+                      if (tmp_obj[key][j]) {
+                        t += key + '%5B%5D=' + tmp_obj[key][j] + '&';
+                      }
+                    }
+                  } else {
+                    t += key + '=' + tmp_obj[key] + '&';
+                  }
+                }
+              }
+            });
+            url = tmp_obj.host + '?' + t;
+          } else {
+            url = $uri;
+          }
+          //    console.log(url)
+          //    console.log(tmp_obj)
+          window.location.href = url;
+        }
+
+        // 领取任务
+        $(document).on('click', '.task_2receive', function () {
+          var id = $(this).attr('data-id');
+          $('#confirm_receive_task').attr('data-id', id);
+          $('#confirm_receive_task').attr('data-type', 'confirm_receive_task');
+          $('#receive_task_modal').find('h5').html('确认领取？');
+          $('#receive_task_modal').modal('show');
+        });
+
+        // 确认事件统一处理函数
+        $(document).on('click', '#confirm_receive_task', function () {
+          //        $("#receive_task_modal").modal('show');
+          var type = $(this).data('type');
+          var id = $(this).data('id');
+          switch (type) {
+            case 'confirm_select_u_admin':
+              break;
+            case 'confirm_receive_task': // 待领取任务确认
+              var id = $(this).attr('data-id');
+              $.post(uri, { action: 'receive_task', id: id }, function (result) {
+                var status = result.status;
+                var msg = result.msg;
+                if (status == 0) {
+                  alertify.success('领取成功');
+                  setTimeout(function () {
+                    reload(current_uri, '');
+                  }, 1000);
+                } else {
+                  alertify.error(msg);
+                }
+                //                        $(this).modal('hide');
+              });
+              break;
+            case 'confirm_task_2other': // 任务待领取指派
+            case 'confirm_list_2other': // 列表任务指派
+              if (!id) {
+                alertify.error('程序异常');
+                return false;
+              }
+              var flag;
+              if (type == 'confirm_task_2other') {
+                flag = 'task_2others';
+              } else if (type == 'confirm_list_2other') {
+                flag = 'list_2others';
+              }
+              var uid = $(this).data('uid');
+              $.post(uri, { action: flag, id: id, uid: uid }, function (result) {
+                var status = result.status;
+                var msg = result.msg;
+                if (status == 0) {
+                  alertify.success('指派成功');
+                  setTimeout(function () {
+                    reload(current_uri, '');
+                  }, 1000);
+                } else {
+                  alertify.error(msg);
+                }
+              });
+              break;
+            default:
+            // nothing
+          }
+        });
+
+        $(document).on('click', '.showOrgModal', function () {
+          var id = $(this).data('id');
+          var type = $(this).data('type');
+          if (type == 'task_2others' || type == 'list_2others') {
+            $('#btn_u_admin_checked').attr('data-priority', type);
+          } else {
+            $('#btn_u_admin_checked').attr('data-priority', '');
+          }
+          $('#network_task_org_modal').modal('show');
+          $('#btn_u_admin_checked').attr('data-type', type);
+          $('#btn_u_admin_checked').attr('data-id', id);
+        });
+
+        $(document).on('click', '.network_task_detail', function () {
+          var id = $(this).data('id');
+          $('#btn_network_log_add').attr('data-id', id);
+          $('#network_task_detail_modal').modal('show');
+          $.post(uri, { action: 'get_task_detail', id: id }, function (result) {
+            var u_userinfo = result.data.u_userinfo;
+            var network_task = result.data.network_task;
+            var network_logs = result.data.network_logs;
+            if (u_userinfo && network_task && network_logs) {
+              $('.network_task_detail_user img').attr('src', u_userinfo.head);
+              $('.network_task_detail_user p:eq(0) span').html(u_userinfo.id);
+              $('.network_task_detail_user p:eq(1) span:eq(0)').html(u_userinfo.username);
+              $('.network_task_detail_user p:eq(1) span:eq(1)').html(u_userinfo.sex);
+              $('.network_task_detail_f1').html(network_task.id);
+              $('.network_task_detail_f2').html(network_task.task_status);
+              $('.network_task_detail_f3').html(network_task.net_tmk_name);
+              $('.network_task_detail_f4').html(network_task.equipment);
+              $('.network_task_detail_f5').html(network_task.test_network_time);
+              $('.network_task_detail_f6').html(network_task.cusername);
+              $('.network_task_detail_f7').html(network_task.lesson_id);
+              $('.network_task_detail_f8').html(network_task.datetime);
+              $('.network_task_detail_f9').html(network_task.sales_name);
+              $('.network_task_detail_f10').html(network_task.test_status);
+
+              var tr = '';
+              $('.network_logs tbody').html('');
+              for (var i = 0; i < network_logs.length; i++) {
+                tr +=
+                  '<tr>' +
+                  '                            <td>' +
+                  network_logs[i].id +
+                  '</td>\n' +
+                  '                            <td>' +
+                  network_logs[i].status +
+                  '</td>\n' +
+                  '                            <td>' +
+                  network_logs[i].cname +
+                  ' ' +
+                  network_logs[i].cid +
+                  '</td>\n' +
+                  '                            <td>' +
+                  u_userinfo.username +
+                  ' ' +
+                  network_logs[i].uid +
+                  '</td>\n' +
+                  '                            <td>' +
+                  network_logs[i].content +
+                  '</td>\n' +
+                  '                            <td>' +
+                  network_logs[i].notice_names +
+                  '</td>\n' +
+                  '                            <td>' +
+                  network_logs[i].ctime +
+                  '</td>\n' +
+                  '                        </tr>';
+              }
+              $('.network_logs tbody').append(tr);
+            }
+          });
+        });
+
+        $(document).on('click', '#btn_network_log_add', function () {
+          $(this).attr('disabled', 'disabled');
+          var that = $(this);
+          var id = $(this).data('id');
+          var content = $('textarea[name=network_log_content]').val();
+          var notice_2cc = $('input[name=notice_2cc]:checked').val();
+          var notice_2service = $('input[name=notice_2service]:checked').val();
+          var data = {
+            action: 'network_add_log',
+            id: id,
+            content: content,
+            notice_2cc: notice_2cc,
+            notice_2service: notice_2service,
+          };
+          $.post(uri, data, function (result) {
+            var status = result.status;
+            var msg = result.msg;
+            if (0 == status) {
+              alertify.success('添加成功');
+              setTimeout(function () {
+                reload(current_uri, '');
+              }, 1000);
+            } else {
+              alertify.error(msg);
+            }
+            that.attr('disabled', false);
+          });
+        });
+
+        $(document).on('click', '.network_task_edit', function () {
+          var id = $(this).data('id');
+          $('.network_task_edit_f1').html(id);
+          $('#btn_network_task_edit_submit').attr('data-id', id);
+          $('#network_task_edit_modal').modal('show');
+        });
+
+        $(document).on('click', '#btn_network_task_edit_submit', function () {
+          var id = $(this).data('id');
+          var equipment = $('input[name=equipment]:checked').val();
+          var test_status = $('input[name=test_status]:checked').val();
+          var nopass_reason;
+          var change_datetime = $('select[name=change_datetime]').find('option:selected').val();
+          var change_datetime_sub = $('select[name=change_datetime_sub]').find('option:selected').val();
+          if (test_status == 1) {
+            nopass_reason = $('select[name=nopass_status]').find('option:selected').val();
+          } else if (test_status == 4) {
+            nopass_reason = $('select[name=nopass_else_status]').find('option:selected').val();
+          }
+
+          var mark = $('textarea[name=mark]').val();
+          var data = {
+            action: 'network_task_edit_submit',
+            id: id,
+            equipment: equipment,
+            test_status: test_status,
+            nopass_reason: nopass_reason,
+            mark: mark,
+            change_datetime: change_datetime,
+            change_datetime_sub: change_datetime_sub,
+          };
+          console.log(data);
+          $.post(uri, data, function (result) {
+            var status = result.status;
+            var msg = result.msg;
+            if (0 == status) {
+              alertify.success('添加成功');
+              setTimeout(function () {
+                reload(current_uri, '');
+              }, 1000);
+            } else {
+              alertify.error(msg);
+            }
+          });
+        });
+
+        $(document).on('change', 'input[name=test_status]', function () {
+          if ($(this).val() == 1) {
+            $('select[name=nopass_else_status]').val('');
+            $('select[name=change_datetime]').val('');
+            $('select[name=change_datetime_sub]').val('');
+          } else if ($(this).val() == 4) {
+            $('select[name=nopass_status]').val('');
+            $('select[name=change_datetime]').val('');
+            $('select[name=change_datetime_sub]').val('');
+          } else if ($(this).val() == 5) {
+            $('select[name=nopass_status]').val('');
+            $('select[name=nopass_else_status]').val('');
+          }
+        });
+        // 查看测网报告
+        $(document).on('click', '.network_task_look', function () {
+          var id = $(this).data('id');
+          $('#network_task_look').modal('show');
+          $.post(uri, { action: 'network_task_look', id: id }, function (result) {
+            var status = result.status;
+            var msg = result.msg;
+            if (status == 0) {
+              var network_task = result.data;
+              $('.network_task_look_f1').html(network_task.id);
+              $('.network_task_look_f2').html(network_task.equipment_name);
+              $('.network_task_look_f3').html(network_task.test_nt_result);
+              $('.network_task_look_f4').html(network_task.mark);
+            }
+          });
+        });
+
+        function showPutBackModal(obj) {
+          $('.network_put_back_f1').html($(obj).data('id'));
+          $('#put_back_task_modal').modal('show');
+        }
+
+        $(document).on('click', '.put_back_task_submit', function () {
+          var id = $('.network_put_back_f1').html();
+          var next_contact_time = $('input[name=next_contact_time]').val();
+          if (!next_contact_time) {
+            alertify.error('请选择下次联系时间');
+            return false;
+          }
+          var current_uri = window.location.href;
+          $.post(uri, { action: 'put_back_task', id: id, next_contact_time: next_contact_time }, function (result) {
+            var status = result.status;
+            var msg = result.msg;
+            if (0 == status) {
+              alertify.success('操作成功');
+              setTimeout(function () {
+                reload(current_uri, '');
+              }, 1000);
+            } else {
+              alertify.error(msg);
+            }
+          });
+        });
+        $(document).on('click', '.showLimitModal', function () {
+          $('#network_task_limit_modal').modal('show');
+          $('.network_task_limit_tbody').html('');
+
+          $.post('network_task.html', { action: 'get_datetime' }, function (result) {
+            var network_task_limit = result.network_task_limit;
+            var str = '';
+
+            for (var k in network_task_limit) {
+              str += '<tr>';
+              str += '<td>' + network_task_limit[k].date_range + '</td>';
+
+              //          $.each(redis_datetime, function (rk, ritem) {
+
+              //            if (k == rk) {
+              str +=
+                '<td><input type="text" class="single_limit" name="' +
+                k +
+                '" value="' +
+                network_task_limit[k].amount +
+                '"></td>';
+              if (!network_task_limit[k].today) {
+                str += '<td>0</td>';
+              } else {
+                str += '<td>' + network_task_limit[k].today + '</td>';
+              }
+              if (!network_task_limit[k].tomorrow) {
+                str += '<td>0</td>';
+              } else {
+                str += '<td>' + network_task_limit[k].tomorrow + '</td>';
+              }
+              if (!network_task_limit[k].after_tomorrow) {
+                str += '<td>0</td>';
+              } else {
+                str += '<td>' + network_task_limit[k].after_tomorrow + '</td>';
+              }
+              //            }
+              //          });
+              str += '</tr>';
+            }
+            $('.network_task_limit_tbody').html(str);
+          });
+        });
+        $(document).on('click', '.batch_input_btn', function () {
+          var limit = $('input[name=batch_limit]').val();
+          if (!limit) {
+            alertify.error('请输入额度');
+            return false;
+          }
+          $('.single_limit').attr('value', limit);
+        });
+        $(document).on('click', '.network_task_limit_submit', function () {
+          var data = new Object();
+          $('.single_limit').each(function (index, elem) {
+            var name = $(this).attr('name');
+            var value = $(this).val();
+            data[name] = value;
+          });
+          data['action'] = 'edit_datetime';
+          $.post('network_task.html', data, function (result) {
+            var status = result.status;
+            var msg = result.msg;
+            if (status === 0) {
+              alertify.success('操作成功');
+              setTimeout(function () {
+                reload(current_uri, '');
+              }, 1000);
+            } else {
+              alertify.error(msg);
+            }
+          });
+        });
+        $(document).on('change', 'select[name=change_datetime]', function () {
+          var date = $(this).find('option:selected').val();
+          if (!date) {
+            return;
+          }
+          $.post(uri, { action: 'get_datetime', datetime: date }, function (result) {
+            var status = result.status;
+            var msg = result.msg;
+            var network_task_limit = result.network_task_limit;
+            if (status !== 0) {
+              alertify.error(msg);
+              return;
+            }
+            $('.network_task_edit_f5').html('');
+            var str = '<option value="">请选择</option>';
+            for (var i = 0; i < network_task_limit.length; i++) {
+              var date_range = network_task_limit[i].date_range;
+              var amount = network_task_limit[i].amount;
+              var limit = network_task_limit[i].limit;
+              var residue = amount - limit;
+              var limit_ch = '';
+              if (residue > 0) {
+                limit_ch = '剩余';
+              } else {
+                limit_ch = '已约满';
+                residue = '';
+              }
+              str +=
+                '<option value="' +
+                date_range +
+                '">' +
+                network_task_limit[i].date_range +
+                '&nbsp;&nbsp;(' +
+                limit_ch +
+                residue +
+                ')';
+            }
+            $('.network_task_edit_f5').html(str);
+          });
+        });
+
+        $(document).on('click', '.task_receive', function () {
+          layer.confirm(
+            '确认领取吗?',
+            {
+              title: '任务领取',
+              btn: ['确认'],
+            },
+            function (index) {
+              layer.close(index);
+
+              $.post(uri, { action: 'task_sort_receive' }, function (result) {
+                var status = result.status;
+                var msg = result.msg;
+                if (status === 0) {
+                  alertify.success('领取成功');
+                  setTimeout(function () {
+                    reload(current_uri, '');
+                  }, 1000);
+                } else {
+                  alertify.error(msg);
+                }
+              });
+            }
+          );
+        });
+      </script>
+    </div>
+    <div class="daterangepicker dropdown-menu show-calendar opensright">
+      <div class="ranges">
+        <div class="range_inputs">
+          <div class="daterangepicker_start_input">
+            <label for="daterangepicker_start">从</label>
+            <input class="input-mini" type="text" name="daterangepicker_start" value="" disabled="disabled" />
+          </div>
+          <div class="daterangepicker_end_input">
+            <label for="daterangepicker_end">到</label>
+            <input class="input-mini" type="text" name="daterangepicker_end" value="" disabled="disabled" />
+          </div>
+          <button class="applyBtn btn btn-small btn-success">确定</button>
+          &nbsp;
+          <button class="cancelBtn btn btn-small btn-default">取消</button>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="calendar right">
+        <div class="calendar-date">
+          <table class="table-condensed">
+            <thead>
+              <tr>
+                <th class="prev available">
+                  <i class="fa fa-arrow-left icon-arrow-left glyphicon glyphicon-arrow-left"></i>
+                </th>
+                <th colspan="5" class="month">十二月 2020</th>
+                <th class="next available">
+                  <i class="fa fa-arrow-right icon-arrow-right glyphicon glyphicon-arrow-right"></i>
+                </th>
+              </tr>
+              <tr>
+                <th>周日</th>
+                <th>周一</th>
+                <th>周二</th>
+                <th>周三</th>
+                <th>周四</th>
+                <th>周五</th>
+                <th>周六</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="off disabled" data-title="r0c0">29</td>
+                <td class="off disabled" data-title="r0c1">30</td>
+                <td class="available in-range" data-title="r0c2">1</td>
+                <td class="available active end-date" data-title="r0c3">2</td>
+                <td class="available" data-title="r0c4">3</td>
+                <td class="available" data-title="r0c5">4</td>
+                <td class="available" data-title="r0c6">5</td>
+              </tr>
+              <tr>
+                <td class="available" data-title="r1c0">6</td>
+                <td class="available" data-title="r1c1">7</td>
+                <td class="available" data-title="r1c2">8</td>
+                <td class="available" data-title="r1c3">9</td>
+                <td class="available" data-title="r1c4">10</td>
+                <td class="available" data-title="r1c5">11</td>
+                <td class="available" data-title="r1c6">12</td>
+              </tr>
+              <tr>
+                <td class="available" data-title="r2c0">13</td>
+                <td class="available" data-title="r2c1">14</td>
+                <td class="available" data-title="r2c2">15</td>
+                <td class="available" data-title="r2c3">16</td>
+                <td class="available" data-title="r2c4">17</td>
+                <td class="available" data-title="r2c5">18</td>
+                <td class="available" data-title="r2c6">19</td>
+              </tr>
+              <tr>
+                <td class="available" data-title="r3c0">20</td>
+                <td class="available" data-title="r3c1">21</td>
+                <td class="available" data-title="r3c2">22</td>
+                <td class="available" data-title="r3c3">23</td>
+                <td class="available" data-title="r3c4">24</td>
+                <td class="available" data-title="r3c5">25</td>
+                <td class="available" data-title="r3c6">26</td>
+              </tr>
+              <tr>
+                <td class="available" data-title="r4c0">27</td>
+                <td class="available" data-title="r4c1">28</td>
+                <td class="available" data-title="r4c2">29</td>
+                <td class="available" data-title="r4c3">30</td>
+                <td class="available" data-title="r4c4">31</td>
+                <td class="available off" data-title="r4c5">1</td>
+                <td class="available off" data-title="r4c6">2</td>
+              </tr>
+              <tr>
+                <td class="available off" data-title="r5c0">3</td>
+                <td class="available off" data-title="r5c1">4</td>
+                <td class="available off" data-title="r5c2">5</td>
+                <td class="available off" data-title="r5c3">6</td>
+                <td class="available off" data-title="r5c4">7</td>
+                <td class="available off" data-title="r5c5">8</td>
+                <td class="available off" data-title="r5c6">9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="calendar left">
+        <div class="calendar-date">
+          <table class="table-condensed">
+            <thead>
+              <tr>
+                <th class="prev available">
+                  <i class="fa fa-arrow-left icon-arrow-left glyphicon glyphicon-arrow-left"></i>
+                </th>
+                <th colspan="5" class="month">十二月 2020</th>
+                <th class="next available">
+                  <i class="fa fa-arrow-right icon-arrow-right glyphicon glyphicon-arrow-right"></i>
+                </th>
+              </tr>
+              <tr>
+                <th>周日</th>
+                <th>周一</th>
+                <th>周二</th>
+                <th>周三</th>
+                <th>周四</th>
+                <th>周五</th>
+                <th>周六</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="available off" data-title="r0c0">29</td>
+                <td class="available off" data-title="r0c1">30</td>
+                <td class="available active start-date" data-title="r0c2">1</td>
+                <td class="available in-range" data-title="r0c3">2</td>
+                <td class="available" data-title="r0c4">3</td>
+                <td class="available" data-title="r0c5">4</td>
+                <td class="available" data-title="r0c6">5</td>
+              </tr>
+              <tr>
+                <td class="available" data-title="r1c0">6</td>
+                <td class="available" data-title="r1c1">7</td>
+                <td class="available" data-title="r1c2">8</td>
+                <td class="available" data-title="r1c3">9</td>
+                <td class="available" data-title="r1c4">10</td>
+                <td class="available" data-title="r1c5">11</td>
+                <td class="available" data-title="r1c6">12</td>
+              </tr>
+              <tr>
+                <td class="available" data-title="r2c0">13</td>
+                <td class="available" data-title="r2c1">14</td>
+                <td class="available" data-title="r2c2">15</td>
+                <td class="available" data-title="r2c3">16</td>
+                <td class="available" data-title="r2c4">17</td>
+                <td class="available" data-title="r2c5">18</td>
+                <td class="available" data-title="r2c6">19</td>
+              </tr>
+              <tr>
+                <td class="available" data-title="r3c0">20</td>
+                <td class="available" data-title="r3c1">21</td>
+                <td class="available" data-title="r3c2">22</td>
+                <td class="available" data-title="r3c3">23</td>
+                <td class="available" data-title="r3c4">24</td>
+                <td class="available" data-title="r3c5">25</td>
+                <td class="available" data-title="r3c6">26</td>
+              </tr>
+              <tr>
+                <td class="available" data-title="r4c0">27</td>
+                <td class="available" data-title="r4c1">28</td>
+                <td class="available" data-title="r4c2">29</td>
+                <td class="available" data-title="r4c3">30</td>
+                <td class="available" data-title="r4c4">31</td>
+                <td class="available off" data-title="r4c5">1</td>
+                <td class="available off" data-title="r4c6">2</td>
+              </tr>
+              <tr>
+                <td class="available off" data-title="r5c0">3</td>
+                <td class="available off" data-title="r5c1">4</td>
+                <td class="available off" data-title="r5c2">5</td>
+                <td class="available off" data-title="r5c3">6</td>
+                <td class="available off" data-title="r5c4">7</td>
+                <td class="available off" data-title="r5c5">8</td>
+                <td class="available off" data-title="r5c6">9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="./测网任务_files/alertify.min.js.下载"></script>
+
+    <script type="text/javascript">
+      $(function () {
+        $('a.nav-link').each(function () {
+          if (location.href.indexOf(this.href) === 0) {
+            $(this).addClass('active');
+          }
+        });
+        $('a.select').each(function () {
+          if (location.href.indexOf(this.href) === 0 || $(this).hasClass('active')) {
+            $(this)
+              .addClass('active')
+              .addClass($(this).data('active') || 'badge-primary');
+          } else {
+            $(this)
+              .removeClass('active')
+              .removeClass($(this).data('active') || 'badge-primary');
+          }
+        });
+        $('textarea.autoheight')
+          .on('scroll', '', function () {
+            $(this).css('height', $(this)[0].scrollHeight);
+          })
+          .each(function () {
+            $(this).css('height', $(this)[0].scrollHeight);
+          });
+
+        $(document).on('click', '.nav-tabs li.nav-item', function () {
+          var self = $(this);
+          self
+            .find('a.nav-link')
+            .addClass('active')
+            .parent()
+            .siblings('li.nav-item')
+            .find('a.nav-link')
+            .removeClass('active');
+        });
+      });
+      $(function () {
+        $(document).on('click', 'button.filter', function () {
+          var expanded = $(this).attr('aria-expanded');
+          $('input[name=filter]').val(expanded);
+        });
+        $(document).on('click', 'a.filter', function () {
+          var expanded = $(this).attr('aria-expanded');
+          $('input[name=filter]').val(expanded);
+        });
+        $(document).on('click', 'a.checked', function () {
+          if ($(this.hash).attr('checked') == 'checked') {
+            $(this).removeClass('active badge-primary');
+            $(this.hash).removeAttr('checked');
+          } else {
+            $(this).addClass('active badge-primary');
+            $(this.hash).attr('checked', 'checked');
+          }
+          return false;
+        });
+      });
+      $(function () {
+        $(document).on('click', 'a.loadmore', function () {
+          if (this.disabled) {
+            return false;
+          }
+          var self = this;
+          self.disabled = true;
+          $.get(this.href, function (result) {
+            if (!result) {
+              self.disabled = false;
+              return;
+            }
+            $(self).parent().remove();
+            $(result).find('div.loadmore>*').appendTo('div.loadmore');
+          });
+          return false;
+        });
+      });
+    </script>
+
+    <link href="https://121cdn.meishubao.com/static/layer/mobile/need/layer.css" />
+    <script src="./测网任务_files/layer.js(1).下载"></script>
+    <script type="text/javascript">
+      $(function () {
+        $(document).on('click', 'input.layeriframe', function () {
+          layer.open({
+            type: 2,
+            title: $(this).data('title') || '',
+            shadeClose: true,
+            closeBtn: false,
+            shade: 0.8,
+            area: ['500px', '80%'],
+            content:
+              $(this).data('href') +
+              'simple=' +
+              (this.name || this.id || '') +
+              '&target=' +
+              ($(this).data('val') || $(this).val() || ''),
+          });
+        });
+
+        $(document).on('click', 'a.layeriframe', function () {
+          var check = $(this).data('check');
+          if (check) {
+            if (!$('#checkAll').is(':checked') && !$('.hasCheck').is(':checked')) {
+              layer.msg('至少选择一个咨询线索');
+              return false;
+            }
+          }
+
+          layer.open({
+            type: 2,
+            title: $(this).data('title') || '',
+            shadeClose: true,
+            closeBtn: $(this).data('closeBtn') || false,
+            shade: 0.8,
+            area: [$(this).data('width') || '500px', $(this).data('height') || '80%'],
+            content:
+              ($(this).data('href') || this.href || '') +
+              'simple=' +
+              (this.name || this.id || '') +
+              '&target=' +
+              ($(this).data('val') || $(this).val() || '') +
+              '&callback=' +
+              this.id,
+          });
+
+          return false;
+        });
+      });
+    </script>
+
+    <script>
+      $(function () {
+        //修改状态
+        $('div.changecheck').on('modal', function (e, tag, source, data) {
+          $(this).modal('show');
+          $(this).find('form').data('tag', tag);
+          $(this).find('form').data('source', source);
+          $(this).find('form').data('data', data);
+          $(this)
+            .find('input')
+            .each(function () {
+              if (this.value == data[tag]) {
+                this.checked = true;
+                return false;
+              }
+            });
+        });
+
+        $('div.changecheck').on('save', function (e) {
+          var self = this;
+          var tag = $(this).find('form').data('tag');
+          var data = $(this).find('form').data('data');
+          var source = $(this).find('form').data('source');
+          $(this)
+            .find('form')
+            .trigger('submit', [
+              data,
+              function () {
+                var id_box = '#dialog-' + tag;
+                var index = data[tag] - 1;
+                var text = $(id_box)
+                  .find('.modal-body')
+                  .find('.form-row')
+                  .find('.col-12')
+                  .eq(index)
+                  .find('.custom-control-label')
+                  .text();
+                $(source).data('val', data[tag]).text(text);
+                $(self).modal('hide');
+              },
+            ]);
+        });
+
+        $(document).on('submit', 'form.changecheck', function (e, data, cb) {
+          var form = $(this).serializeArray();
+          $(form).each(function () {
+            data[this.name] = this.value;
+          });
+          postData(this, data, null, function (data, next) {
+            $('div.changecheck').modal('hide');
+            if (next) next(data);
+            setTimeout(function () {
+              location.reload();
+            }, 500);
+          });
+          return false;
+        });
+      });
+    </script>
+
+    <script>
+      $(function () {
+        // 修改文字
+        $('div.editText').on('modal', function (e, tag, source, data) {
+          $(this).modal('show');
+          $(this).find('form').data('tag', tag);
+          $(this).find('form').data('source', source);
+          $(this).find('form').data('data', data);
+        });
+
+        $('div.editText').on('save', function (e) {
+          var self = this;
+          var tag = $(this).find('form').data('tag');
+          var data = $(this).find('form').data('data');
+          var source = $(this).find('form').data('source');
+          $(this)
+            .find('form')
+            .trigger('submit', [
+              data,
+              function () {
+                var html = data[tag];
+                $(source).parents('td').html(html);
+                $(self).modal('hide');
+              },
+            ]);
+        });
+
+        $(document).on('submit', 'form.editText', function (e, data, cb) {
+          var form = $(this).serializeArray();
+          $(form).each(function () {
+            data[this.name] = this.value;
+          });
+
+          postData(this, data, null, function (data, next) {
+            $('div.editText').modal('hide');
+            if (next) next(data);
+            setTimeout(function () {
+              location.reload();
+            }, 500);
+          });
+          return false;
+        });
+      });
+    </script>
+
+    <script>
+      /*
+      post 提交方法
+      
+      from: 要提交的form表单；
+      data：要提交的data；
+      action: 提交的方式默认submit；
+      cb: 回调
+  */
+      function postUser(form, data, action, cb) {
+        if (typeof form == 'string') {
+          form = {
+            action: form,
+          };
+        } else if (typeof form == 'undefined') {
+          form = {};
+        } else if (typeof form == null) {
+          form = {};
+        }
+        form.action = 'u_userinfo_modify';
+        return postData(form, data, action, cb);
+      }
+
+      function postData(form, data, action, cb) {
+        // console.log(form);
+        // console.log(data);
+        // console.log(action);
+        // return false;
+        if (typeof form == 'string') {
+          form = {
+            action: form,
+          };
+        } else {
+        }
+
+        var self = form || {};
+
+        if (self.disabled) {
+          return false;
+        }
+
+        self.disabled = true;
+        var post = data || $(self).serialize();
+        var sp = self.action.indexOf('?') ? '?' : '&';
+        var url = action || self.action + sp + 'action=' + (action || 'submit');
+        // console.log(post);
+        // console.log(sp);
+        // console.log(url);
+        // return false;
+        $.post(url, post, function (data) {
+          setTimeout(function () {
+            self.disabled = false;
+          }, 3000);
+          if (cb) {
+            cb(data, notify);
+          } else {
+            notify(data);
+          }
+        });
+
+        function notify(data) {
+          if (data && data.status == 0) {
+            if (data.msg == 'ok') {
+              alertify.success('保存成功');
+            } else {
+              alertify.log(data.msg);
+            }
+          } else {
+            if (data && data.msg) {
+              alertify.error(data.msg);
+            } else {
+              alertify.error('提交失败，请稍后再试');
+            }
+          }
+        }
+      }
+    </script>
+
+    <script>
+      //筛选搜索
+      $(function () {
+        $(document).on('change', '#select-filter', function () {
+          var name = $(this).children('option:selected').attr('name');
+          var text = $(this).children('option:selected').data('text');
+          $('#words').attr('name', name);
+          $('#words').attr('placeholder', text);
+          console.log(name);
+          console.log(text);
+        });
+
+        $(document).on('submit', '#search', function () {
+          // location.href = this.action + '&' + $('#words').attr('name') + '=' + $('#words').val();
+          // return false;
+        });
+      });
+    </script>
+    <script src="../MSB_Network_Script.js"></script>
+    <script>
+      $(function () {
+        $(document).on('click', 'header .nav-item', function () {
+          $(this).addClass('active').siblings().removeClass('active');
+        });
+      });
+    </script>
+
+    <script src="./测网任务_files/socket.io.slim.js.下载"></script>
+    <script>
+      setTimeout(function () {
+        if (parent == null || parent == window) {
+          $(function () {
+            // var s = Array;
+            // var ss = JSON.parse(s);
+            // console.log(ss)
+            var msgs = [];
+            var user = {
+              uid: '3962121',
+              uuid: 'qhclii15z58g164',
+              title: '8',
+              region: '杭州',
+              regiontitle: '杭州-8',
+              all: '',
+            };
+            var host = 'https://push.meishubao.com';
+            var nsp = 'default';
+            var join = encodeURIComponent(JSON.stringify(user));
+
+            if (!host) return;
+
+            var socket = io(host + '/' + nsp + '?token=asadsf23r23&join=' + join);
+            var count = 0;
+            socket.on('message', function (msg) {
+              msgs.push(msg.msgid);
+              count++;
+              if (!msg) return;
+              if (msg.type == 'text') {
+                $('#msglist').prepend(
+                  $(
+                    '<div"><span>' +
+                      msg.sendname +
+                      ':</span><span>' +
+                      msg.sendtime +
+                      '</span></div><br/><div">' +
+                      msg.text +
+                      '</div><hr>'
+                  )
+                );
+                $('#msgbox').modal('show');
+              } else if (msg.type == 'ctrl' && 'close') {
+                $('#msglist').empty();
+                $('#msgbox').modal('hide');
+              } else if (msg.type == 'task') {
+                // 测网任务
+                var id = msg.text.split(':')[1];
+                $('.task' + id).remove();
+                $('#task_count').html(parseInt($('#task_count').html()) - 1);
+              } else if (msg.type == 'task_put_back') {
+                // 测网任务
+                $('#task_put_back').css({ display: 'block' });
+                $('#task_put_back_count').html(parseInt($('#task_put_back_count').html()) + 1);
+              } else if (msg.type == 'lesson_monitor') {
+                console.log(msg);
+                var params = msg.text.split(':');
+                var id = params[1];
+                var uid = params[2];
+                var lessonType = params[3];
+                var isClose = params[4];
+                var canMonitorCount = params[5];
+
+                var urlLessonId = window.monitorData.lessonId;
+                var urlLessonType = window.monitorData.lessonType;
+
+                if (id == urlLessonId) {
+                  window.location.href =
+                    '/admin/monitorclass#/monitorclass?lessonId=' +
+                    id +
+                    '&uid=' +
+                    uid +
+                    '&lessonType=' +
+                    lessonType +
+                    '&isClose=' +
+                    isClose +
+                    '&canMonitorCount=' +
+                    canMonitorCount;
+                }
+              }
+            });
+            socket.on('connect', function () {
+              $.ajax({
+                type: 'GET',
+                url: 'u_admin_msg.html?action=getnoread',
+                data: {
+                  adminid: '3962121',
+                },
+                dataType: 'json',
+                success: function (data) {
+                  if (data.status == 0) {
+                    $('span.unmsgnum').text(data.num);
+                  }
+                },
+              });
+            });
+            socket.on('error', function (data) {
+              console.error(data);
+            });
+            socket.on('disconnect', function () {
+              console.debug('disconnect');
+            });
+            window.openPushMsg = function () {
+              $('#msglist').empty();
+              closeMsg();
+              readMsg();
+              return true;
+            };
+
+            function closeMsg() {
+              socket.emit('message', {
+                type: 'ctrl',
+                action: 'close',
+                to: 'uid:' + user.uid,
+                from: 'uid:' + user.uid,
+              });
+            }
+
+            function readMsg() {
+              $.ajax({
+                type: 'POST',
+                url: 'u_admin_msg.html?action=read',
+                data: {
+                  msgid: msgs,
+                  uid: '3962121',
+                },
+                dataType: 'json',
+                success: function (data) {
+                  console.log(data);
+                },
+              });
+            }
+          });
+        }
+      }, 1000);
+    </script>
+    <div
+      class="modal"
+      id="msgbox"
+      style="z-index: 999999999999"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+      data-backdrop="static"
+      aria-labelledby="exampleModalLabel"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">即时消息</h5>
+          </div>
+          <div id="msglist" class="modal-body" style="max-height: 350px; overflow: auto"></div>
+          <div class="modal-footer">
+            <a
+              id="msgLink"
+              href="https://vip.meishubao.com/admin/network_task.html?id=3962121&amp;task_list_datetime=2020-12-01%20-%202020-12-02&amp;task_list_datetime_sub=&amp;task_list_key=&amp;change_datetime=&amp;change_datetime_sub=&amp;task_status%5B%5D=1&amp;task_status%5B%5D=2&amp;task_status%5B%5D=3&amp;task_status%5B%5D=4&amp;task_status%5B%5D=all&amp;#"
+              target="_blank"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              onclick="return openPushMsg();"
+            >
+              关闭
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').each(function () {
+          if (!this.title) $(this).attr('title', this.innerText);
+          $(this).tooltip();
+        });
+        $('[data-toggle="popover"]').each(function () {
+          $(this).attr('data-content', this.innerHTML);
+          $(this).popover();
+        });
+      });
+    </script>
+  </body>
+</html>
