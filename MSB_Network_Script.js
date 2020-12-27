@@ -1,15 +1,16 @@
 // ==UserScript==
 // @name         MSB-Network_Task_Pro
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.1.2
 // @description  更改了一些布局 快速处理
 // @author       OriX
 // @match        *://vip.meishubao.com/admin/network_task.html?*
+// @updateURL    https://github.com/OriX0/Msb_Network_Script/blob/main/MSB_Network_Script.js
 // @grant        none
 // ==/UserScript==
 /*
  * @LastEditors: OriX
- * @LastEditTime: 2020-12-26 20:42:02
+ * @LastEditTime: 2020-12-27 13:06:24
  * @Copyright (C) 2020 OriX. All rights reserved.
  */
 //----------配置部分 可调整(*^▽^*)----------
@@ -363,7 +364,7 @@ let receive_section = {
       residue_num = +result_num_process.match(result_reg)[0];
       console.log('当前查询结果数量：', residue_num);
       if (residue_num < 3) {
-        task_receive_quickly(1);
+        receive_section.task_receive_quickly(1);
         // 使用DOM变动观察器
         let observer = new MutationObserver(mutationRecords => {
           if (mutationRecords.length == 4) {
@@ -397,11 +398,11 @@ receive_section.dom.grap_input.onclick = function () {
 };
 // 领取一个
 receive_section.dom.receive_quickly_btn.onclick = function () {
-  task_receive_quickly(1);
+  receive_section.task_receive_quickly(1);
 };
 add_btn_to_parent(receive_section.dom.receive_quickly_btn, receive);
 // 领取三个 防抖
-receive_section.dom.receive_quickly_btn3.onclick = debounce(() => task_receive_quickly(3), 1500, true);
+receive_section.dom.receive_quickly_btn3.onclick = debounce(() => receive_section.task_receive_quickly(3), 1500, true);
 add_btn_to_parent(receive_section.dom.receive_quickly_btn3, receive);
 // 页面刷新 自动判断抢单
 receive_section.auto_get();
