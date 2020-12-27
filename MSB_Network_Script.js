@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MSB-Network_Task_Pro
 // @namespace    http://tampermonkey.net/
-// @version      1.1.2
+// @version      1.1.3
 // @description  更改了一些布局 快速处理
 // @author       OriX
 // @match        *://vip.meishubao.com/admin/network_task.html?*
@@ -10,7 +10,7 @@
 // ==/UserScript==
 /*
  * @LastEditors: OriX
- * @LastEditTime: 2020-12-27 13:06:24
+ * @LastEditTime: 2020-12-27 16:29:55
  * @Copyright (C) 2020 OriX. All rights reserved.
  */
 //----------配置部分 可调整(*^▽^*)----------
@@ -109,7 +109,7 @@ const task_info_btns_options = [
   },
   {
     theme: 'btn-info',
-    btn_title: '未接并提交',
+    btn_title: '下载并提交',
     edit_area_text: '下载 5分钟后再次联系' + get_waiting_time(),
     auto_submit: true,
     to_cc: false,
@@ -121,16 +121,21 @@ const task_info_btns_options = [
     auto_submit: true,
     to_cc: true,
   },
+  {
+    theme: 'btn-success',
+    btn_title: '正常进入',
+    edit_area_text: '已经正常进入等待监课',
+    auto_submit: true,
+    to_cc: true,
+  },
 ];
 //----------全局参数部分(*^▽^*)----------
 // 剩余结果部分
 let residue_num;
 // 测网报告是否自动提交
-let task_edit_auto_submit;
+let task_edit_auto_submit = localStorage.getItem('isAutoSumbitTask');
 // 是否开启自动接单
 let isAutoGet = localStorage.getItem('isAutoGet');
-// 是否开启自动提交
-let isAutoSubmit = localStorage.getItem('isAutoSubmit');
 //----------Tools函数部分(*^▽^*)----------
 // 防抖函数   优化请求
 function debounce(fn, wait, immediate) {
@@ -214,7 +219,7 @@ function create_ori_btn(theme, text, bgc) {
   return temp_btn;
 }
 // 创建带label的input选择框
-function create_checkbox_with_label(forId, text, labelColor, parentElement) {
+function create_checkbox_with_label(forId, text, labelColor, parentElement, antoherCSS = null) {
   let temp_label = document.createElement('label');
   temp_label.setAttribute('for', forId);
   temp_label.innerText = text;
@@ -233,6 +238,7 @@ function create_checkbox_with_label(forId, text, labelColor, parentElement) {
     border-radius: 5px;
     font-size: 20px;
     background-color: ${labelColor};
+    ${antoherCSS}
   `;
   let temp_checkbox = document.createElement('input');
   temp_checkbox.setAttribute('id', forId);
@@ -249,6 +255,7 @@ function create_checkbox_with_label(forId, text, labelColor, parentElement) {
   temp_label.append(temp_checkbox);
   parentElement.append(temp_label);
   temp_checkbox.checked = false;
+  console.log(temp_checkbox);
   return temp_checkbox;
 }
 // 往父元素中增加按钮
@@ -287,7 +294,7 @@ let conditional_query_section = {
     for (let status_one of this.dom.task_status_cboxs) {
       status_arr.push(+status_one.checked);
     }
-    for (let status_one of this.domchecked_status_cboxs) {
+    for (let status_one of this.dom.checked_status_cboxs) {
       status_arr.push(+status_one.checked);
     }
     return status_arr.toString();
@@ -296,10 +303,10 @@ let conditional_query_section = {
   reset_all_conditions() {
     this.dom.task_status_cbox.click();
     this.dom.checked_status_cbox.click();
-    if (task_status_cbox.checked) {
+    if (this.dom.task_status_cbox.checked) {
       this.dom.task_status_cbox.click();
     }
-    if (checked_status_cbox.checked) {
+    if (this.dom.checked_status_cbox.checked) {
       this.dom.checked_status_cbox.click();
     }
     this.dom.task_key_input.value = null;
@@ -307,8 +314,8 @@ let conditional_query_section = {
   // 核对是否只选择了处理中
   checked_only_processing() {
     let flage = false;
-    if (this.get_all_status_text() != only_process_t) {
-      reset_all_conditions();
+    if (this.get_all_status_text() != conditional_query_section.only_process_t) {
+      conditional_query_section.reset_all_conditions();
       this.dom.processing_cbox.click();
       console.log('由于checkBox 我刷新了页面');
       this.dom.task_list_submit.click();
@@ -384,14 +391,16 @@ let receive_section = {
 // 修改任务领取栏宽度
 receive_section.change_receive_layout();
 // 判断是否自动领取
+console.log(receive_section.dom.grap_input);
 if (isAutoGet) {
-  receive_section.dom.grab_input.checked = true;
+  receive_section.dom.grap_input.checked = true;
 }
 // 更改isAutoGet
 receive_section.dom.grap_input.onclick = function () {
   if (grab_input.checked) {
     localStorage.setItem('isAutoGet', true);
-    task_list_submit.click();
+    // 点击查询按钮从而刷新页面
+    conditional_query_section.dom.task_list_submit.click();
   } else {
     localStorage.removeItem('isAutoGet');
   }
@@ -472,6 +481,15 @@ let task_edit_modal_section = {
     unable_group: form_groups[5],
     change_group: form_groups[6],
   },
+  create_dom: {
+    auto_submit_input: create_checkbox_with_label(
+      'task_edit_submit',
+      '自动提交',
+      '#c24545',
+      form_groups[2],
+      'float:right;margin:0 66px 0 0;'
+    ),
+  },
   task_edit_create_btns_add_event({ parentElement, theme, btnTextArray = [], checkInputId, selectClassName }) {
     const context = this;
     btnTextArray.map(item => {
@@ -488,16 +506,30 @@ let task_edit_modal_section = {
           let temp_select = task_edit_modal.querySelector('.' + selectClassName);
           temp_select.value = item['select_value'];
         }
-        task_edit_submit = document.getElementById('btn_network_task_edit_submit');
-        task_edit_submit.click();
-
-        // task_edit_submit.dispatchEvent(new CustomEvent('ori'));
+        // 测网报告是否自动提交
+        task_edit_auto_submit = localStorage.getItem('isAutoSumbitTask');
+        if (task_edit_auto_submit) {
+          let task_edit_submit = document.getElementById('btn_network_task_edit_submit');
+          task_edit_submit.click();
+        }
       };
     });
   },
 };
-//
 
+// 更改isAutoSumbitTask
+let task_input = task_edit_modal_section.create_dom.auto_submit_input;
+// 根据是否提交勾选input
+if (task_edit_auto_submit) {
+  task_input.checked = true;
+}
+task_input.onclick = function () {
+  if (task_input.checked) {
+    localStorage.setItem('isAutoSumbitTask', true);
+  } else {
+    localStorage.removeItem('isAutoSumbitTask');
+  }
+};
 //---成通过按钮
 let success_btn_create_option = {
   parentElement: task_edit_modal_section.dom.success_group,
