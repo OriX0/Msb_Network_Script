@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MSB-Network_Task_Pro
-// @namespace    http://tampermonkey.net/
-// @version      1.1.3
+// @namespace    OriX
+// @version      1.1.3.1
 // @description  更改了一些布局 快速处理
 // @author       OriX
 // @match        *://vip.meishubao.com/admin/network_task.html?*
@@ -10,7 +10,7 @@
 // ==/UserScript==
 /*
  * @LastEditors: OriX
- * @LastEditTime: 2020-12-27 16:29:55
+ * @LastEditTime: 2021-01-22 15:21:08
  * @Copyright (C) 2020 OriX. All rights reserved.
  */
 //----------配置部分 可调整(*^▽^*)----------
@@ -92,27 +92,39 @@ const unable_btn_title_options = [
   //   select_value: 0,
   // },
 ];
+// 任务详情配置
+/*
+    theme: 主题  可选  bs里面的  建议 info ,
+    btn_title: 按钮文字,
+    edit_area_text: 任务详情里面的文字,
+    auto_submit: 是否自动提交 true真 false 假,
+    to_cc: 是否通知课程顾问  true真 false 假,
+    need_time: 是否需要计算时间 五分钟后的时间  true真 false 假,
+*/
 const task_info_btns_options = [
   {
     theme: 'btn-warning',
     btn_title: '未接并提交',
-    edit_area_text: '未接 5分钟后尝试再次联系' + get_waiting_time(),
+    edit_area_text: '未接 5分钟后尝试再次联系',
     auto_submit: true,
     to_cc: false,
+    need_time: true,
   },
   {
     theme: 'btn-danger',
     btn_title: '拒接并提交',
-    edit_area_text: '拒接 5分钟后尝试再次联系' + get_waiting_time(),
+    edit_area_text: '拒接 5分钟后尝试再次联系',
     auto_submit: true,
     to_cc: false,
+    need_time: true,
   },
   {
     theme: 'btn-info',
     btn_title: '下载并提交',
-    edit_area_text: '下载 5分钟后再次联系' + get_waiting_time(),
+    edit_area_text: '下载 5分钟后再次联系',
     auto_submit: true,
     to_cc: false,
+    need_time: true,
   },
   {
     theme: 'btn-info',
@@ -120,13 +132,15 @@ const task_info_btns_options = [
     edit_area_text: '家长说今天不方便 需要明天调试 麻烦课程老师建立明天的测网',
     auto_submit: true,
     to_cc: true,
+    need_time: false,
   },
   {
     theme: 'btn-success',
     btn_title: '正常进入',
     edit_area_text: '已经正常进入等待监课',
     auto_submit: true,
-    to_cc: true,
+    to_cc: false,
+    need_time: false,
   },
 ];
 //----------全局参数部分(*^▽^*)----------
@@ -136,6 +150,7 @@ let residue_num;
 let task_edit_auto_submit = localStorage.getItem('isAutoSumbitTask');
 // 是否开启自动接单
 let isAutoGet = localStorage.getItem('isAutoGet');
+
 //----------Tools函数部分(*^▽^*)----------
 // 防抖函数   优化请求
 function debounce(fn, wait, immediate) {
@@ -255,13 +270,14 @@ function create_checkbox_with_label(forId, text, labelColor, parentElement, anto
   temp_label.append(temp_checkbox);
   parentElement.append(temp_label);
   temp_checkbox.checked = false;
-  console.log(temp_checkbox);
+  // console.log(temp_checkbox);
   return temp_checkbox;
 }
 // 往父元素中增加按钮
 function add_btn_to_parent(btnE, parentE) {
   parentE.append(btnE);
 }
+
 //----------条件查询部分(*^▽^*)----------
 let conditional_query_section = {
   // 仅有处理中的数字文本表示
@@ -391,7 +407,7 @@ let receive_section = {
 // 修改任务领取栏宽度
 receive_section.change_receive_layout();
 // 判断是否自动领取
-console.log(receive_section.dom.grap_input);
+// console.log(receive_section.dom.grap_input);
 if (isAutoGet) {
   receive_section.dom.grap_input.checked = true;
 }
@@ -446,6 +462,9 @@ let task_info_section = {
       let temp_btn = create_btn_base_on_bs(item.theme, item.btn_title);
       temp_btn.onclick = function () {
         context.dom.form_control.value = item.edit_area_text;
+        if (item.need_time) {
+          context.dom.form_control.value += get_waiting_time();
+        }
         if (item.to_cc) {
           context.dom.post_info_to_cc.click();
         }
@@ -548,3 +567,4 @@ let unable_btn_create_option = {
   selectClassName: 'network_task_edit_f4',
 };
 task_edit_modal_section.task_edit_create_btns_add_event(unable_btn_create_option);
+//----------Segmentation(*^▽^*)----------

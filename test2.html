@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./Msb_Boss_location/测网任务_files/bootstrap.min.css" />
+    <script src="./Msb_Boss_location/测网任务_files/jquery.min.js.下载"></script>
+    <script src="./Msb_Boss_location/测网任务_files/bootstrap.min.js.下载"></script>
+  </head>
+  <body>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary cyxy-trs-source"
+      data-toggle="modal"
+      data-target="#success_btns_option_model"
+    >
+      Extra large modal
+      <span class="cyxy-trs-target">超大型模态</span>
+    </button>
+    <div
+      class="modal fade"
+      id="success_btns_option_model2"
+      tabindex="-1"
+      aria-labelledby="success_btns_option_model"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title h4" id="success_btns_option_modelLabel">
+              按钮配置
+              <span class="badge badge-success">通过</span>
+              <button
+                type="button"
+                class="btn btn-info"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="名字:按钮名字  内容:测网报告编辑部分的内容  单选框:是否启用,不启用则会删除"
+              >
+                看配置说明
+              </button>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="input-group col-lg-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">名字</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                  class="btns_name_success"
+                  value="客户端通过"
+                />
+              </div>
+              <div class="input-group col-lg-7">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">内容</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                  class="edit_area_text_success"
+                  value="测网通过，客户端,摄像头，扬声器，麦克风，设备正常。"
+                />
+              </div>
+              <div class="input-group col-lg-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input
+                      type="checkbox"
+                      aria-label="Checkbox for following text input"
+                      class="btns_is_using_success"
+                    />
+                  </div>
+                </div>
+                <input type="text" class="form-control" value="启用?" />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // 成功部分配置
+    const success_btn_text_options = [
+      {
+        btn_title: '客户端通过',
+        edit_area_text: `测网通过,客户端,摄像头,扬声器,麦克风,设备正常。`,
+        select_value: 0,
+      },
+      {
+        btn_title: '浏览器通过',
+        edit_area_text: ` 测网通过,浏览器,摄像头,扬声器,麦克风,设备正常。`,
+        select_value: 0,
+      },
+      {
+        btn_title: '监课通过',
+        edit_area_text: '监课显示,师生已上课,摄像头,麦克风、扬声器,设备正常 ',
+        select_value: 0,
+      },
+    ];
+    let success_btns_dom = '';
+    for (const item of success_btn_text_options) {
+      success_btns_dom += `
+        <div class="row" style="margin-bottom:10px;">
+          <div class="input-group col-lg-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">名字</span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              class="btns_name_success"
+              value=${item.btn_title}
+            />
+          </div>
+          <div class="input-group col-lg-7">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">内容</span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              class="edit_area_text_success"
+              value=${item.edit_area_text}
+            />
+          </div>
+          <div class="input-group col-lg-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  checked
+                  aria-label="Checkbox for following text input"
+                  class="btns_is_using_success"
+                />
+              </div>
+            </div>
+            <input type="text" class="form-control" value="启用?" />
+          </div>
+        </div>
+      `;
+    }
+    let success_modal_dom = `
+    <div
+      class="modal fade"
+      id="success_btns_option_model"
+      tabindex="-1"
+      aria-labelledby="success_btns_option_model"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title h4" id="success_btns_option_modelLabel">
+              按钮配置
+              <span class="badge badge-success">通过</span>
+              <button
+                type="button"
+                class="btn btn-info btn-sm"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="名字:按钮名字  内容:测网报告编辑部分的内容  单选框:是否启用,不启用则会删除"
+              >
+                看配置说明
+              </button>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ${success_btns_dom}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">新增</button>
+            <button type="button" class="btn btn-primary">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>   
+    `;
+    let tempDiv = document.createElement('div');
+    tempDiv.innerHTML = success_modal_dom;
+    document.body.appendChild(tempDiv);
+    function createOptionDom() {
+      
+    }
+  </script>
+</html>
