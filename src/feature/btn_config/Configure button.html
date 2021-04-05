@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./Msb_Boss_location/测网任务_files/bootstrap.min.css" />
+    <script src="./Msb_Boss_location/测网任务_files/jquery.min.js.下载"></script>
+    <script src="./Msb_Boss_location/测网任务_files/bootstrap.min.js.下载"></script>
+  </head>
+  <body>
+    <button id="show_pro_modal" type="button" class="btn btn-primary cyxy-trs-source" data-toggle="modal">
+      <span class="cyxy-trs-target">配置测网报告按钮</span>
+    </button>
+  </body>
+  <script>
+    // 1. 先读取关于按钮的配置
+    const defalut_config_obj_ori = {
+      // 测网报告部分
+      success_btn_text_options: [
+        {
+          btn_title: '客户端通过',
+          edit_area_text: `测网通过,客户端,摄像头,扬声器,麦克风,设备正常。`,
+          select_value: 0,
+        },
+        {
+          btn_title: '浏览器通过',
+          edit_area_text: ` 测网通过,浏览器,摄像头,扬声器,麦克风,设备正常。`,
+          select_value: 0,
+        },
+        {
+          btn_title: '监课通过',
+          edit_area_text: '监课显示,师生已上课,摄像头、麦克风、扬声器,设备正常 ',
+          select_value: 0,
+        },
+      ],
+      // 无法调试部分配置
+      unable_btn_title_options: [
+        {
+          btn_title: '取消',
+          edit_area_text: '课程已取消,无法调试,测网工单取消,如需测网请重新预约 ',
+          select_value: 23,
+        },
+        {
+          btn_title: '改约',
+          edit_area_text: '课程已改约,无法调试,测网工单取消,如需测网请重新预约 ',
+          select_value: 23,
+        },
+        {
+          btn_title: '未接',
+          edit_area_text: '无人接听/通话中,无法调试,测网工单取消,如需测网请重新预约',
+          select_value: 24,
+        },
+        {
+          btn_title: '拒接',
+          edit_area_text: '电话拒接,无法调试,测网工单取消,如需测网请重新预约',
+          select_value: 25,
+        },
+        {
+          btn_title: '生病',
+          edit_area_text: '小朋友或家里人生病了,无法参加 无法调试,测网工单取消,如需测网请重新预约',
+          select_value: 26,
+        },
+        {
+          btn_title: '有事',
+          edit_area_text: '临时有事,无法参加,无法调试,测网工单取消,如需测网请重新预约',
+          select_value: 26,
+        },
+        {
+          btn_title: '在外面',
+          edit_area_text: '现在还在外面,赶不回去,无法参加 无法调试,测网工单取消,如需测网请重新预约',
+          select_value: 26,
+        },
+        {
+          btn_title: '拒调',
+          edit_area_text: '不需要/自己调试,不需要我们调试,无法调试,测网工单取消,如需测网请重新预约 ',
+          select_value: 27,
+        },
+        {
+          btn_title: 'cc调试',
+          edit_area_text: '家长说CC调试设备,无法调试,测网工单取消,如需测网请重新预约',
+          select_value: 28,
+        },
+      ],
+      // 任务详情配置
+      /*
+          theme: 主题  可选  bs里面的  建议 info ,
+          btn_title: 按钮文字,
+          edit_area_text: 任务详情里面的文字,
+          auto_submit: 是否自动提交 true真 false 假,
+          to_cc: 是否通知课程顾问  true真 false 假,
+          need_time: 是否需要计算时间 五分钟后的时间  true真 false 假,
+      */
+      task_info_btns_options: [
+        {
+          theme: 'btn-warning',
+          btn_title: '未接并提交',
+          edit_area_text: '未接,5分钟后尝试再次联系',
+          auto_submit: true,
+          to_cc: false,
+          need_time: true,
+        },
+        {
+          theme: 'btn-danger',
+          btn_title: '拒接并提交',
+          edit_area_text: '拒接,5分钟后尝试再次联系',
+          auto_submit: true,
+          to_cc: false,
+          need_time: true,
+        },
+        {
+          theme: 'btn-info',
+          btn_title: '下载并提交',
+          edit_area_text: '下载,5分钟后再次联系',
+          auto_submit: true,
+          to_cc: false,
+          need_time: true,
+        },
+        {
+          theme: 'btn-info',
+          btn_title: '明天再调试',
+          edit_area_text: '家长说今天不方便,需要明天调试,麻烦课程老师建立明天的测网',
+          auto_submit: true,
+          to_cc: true,
+          need_time: false,
+        },
+        {
+          theme: 'btn-success',
+          btn_title: '正常进入',
+          edit_area_text: '家长未联系上但是已经正常进入等待老师进入监课',
+          auto_submit: true,
+          to_cc: false,
+          need_time: false,
+        },
+      ],
+    };
+    let network_Task_Pro_config_Obj_OriX = localStorage.getItem('network_Task_Pro_config_Obj_OriX');
+    // 1.1 如果是初次加载插件 没有该配置 将默认配置 载入到 localStorage
+    if (network_Task_Pro_config_Obj_OriX == null) {
+      network_Task_Pro_config_Obj_OriX = defalut_config_obj_ori;
+      localStorage.setItem('network_Task_Pro_config_Obj_OriX', JSON.stringify(defalut_config_obj_ori));
+    } else {
+      // 1.2 已经有该配置 就用json读取进行解析
+      network_Task_Pro_config_Obj_OriX = JSON.parse(network_Task_Pro_config_Obj_OriX);
+    }
+
+    // 2.根据对象构建已有配置按钮的DOM
+    function create_task_edit_btns_dom(configObj, btnType) {
+      let temp_dom = '';
+      configObj.map(item => {
+        temp_dom += `
+        <div class="row" style="margin-bottom:10px;">
+          <div class="input-group col-lg-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">名字</span>
+            </div>
+            <input
+              type="text"
+              class="form-control btns_name_ori"
+              ${item.btn_title == null ? 'placeholder="输入按钮名称"' : 'value=' + item.btn_title}
+            />
+          </div>
+          <div class="input-group col-lg-5">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">内容</span>
+            </div>
+            <input
+              type="text"
+              class="form-control edit_area_text_ori"
+              ${item.edit_area_text == null ? 'placeholder="内容(不可用空格隔开"' : 'value=' + item.edit_area_text}
+            />
+          </div>
+          <div class="input-group col-lg-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  checked
+                  class="btns_is_using_ori"
+                />
+              </div>
+            </div>
+            <input type="text" class="form-control" value="启用?" />
+          </div>
+      `;
+        switch (btnType) {
+          case 'Success':
+            temp_dom += `
+                <select class="netWork_Pro_config_select ">
+                  <option value="0"  ${item.select_value == 0 ? 'selected' : ''}>测网通过</option>
+                </select>
+              </div>
+          `;
+            break;
+          case 'Unable':
+            temp_dom += `
+                <select class="netWork_Pro_config_select col-lg-2">
+                    <option >选择不通过原因</option>
+                    <option value="23" ${item.select_value == 23 ? 'selected' : ''}>取消课程</option>
+                    <option value="24" ${item.select_value == 24 ? 'selected' : ''}>无人接听</option>
+                    <option value="25" ${item.select_value == 25 ? 'selected' : ''}>家长拒接</option>
+                    <option value="26" ${item.select_value == 26 ? 'selected' : ''}>不能出席</option>
+                    <option value="27" ${item.select_value == 27 ? 'selected' : ''}>拒绝调试</option>
+                    <option value="28" ${item.select_value == 28 ? 'selected' : ''}>CC调试</option>
+                    <option value="29" ${item.select_value == 29 ? 'selected' : ''}>其他</option>
+                  </select>
+              </div>
+            `;
+            break;
+
+          case 'TaskInfo':
+            temp_dom += `
+              <div class="input-group col-lg-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input
+                      type="checkbox"
+                      ${item.need_time == true ? 'checked' : ''}
+                      class="btns_is_need_time_ori"
+                    />
+                  </div>
+                </div>
+                <input type="text" class="form-control" value="计时" />
+              </div>
+            </div>
+            `;
+            break;
+        }
+      });
+      return temp_dom;
+    }
+    // 3.构建模态框DOM
+    function create_task_edit_config_modal_dom(success_btns_dom, unable_btns_dom, TaskInfo_btns_dom) {
+      let tempDiv = document.createElement('div');
+      tempDiv.innerHTML = `
+      <div
+        class="modal fade"
+        id="Network_Task_Pro_modal_OriX"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title h4" id="Network_Task_Pro_modal_OriXLabel">
+                按钮配置
+                <button
+                  type="button"
+                  class="btn btn-info btn-sm"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="名字:按钮名字\n内容:测网报告编辑部分的内容(这里面的文字不能用空格隔开 否则展现的时候不会展现空格后面的文字)\n单选框:是否启用,不启用则会删除\n下拉框:选择测网不通过的原因或者测网通过\n 计时：在报告尾部计算下次联系时间（5分钟后）"
+                >
+                  鼠标放置查看配置说明
+                </button>
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body"id="ori_task_edit_modal_body">
+              <div class="accordion" id="accordionOri">
+
+                <div class="card">
+                  <div class="card-header" id="headingSuccess">
+                    <h2 class="mb-0">
+                      <button
+                        class="btn btn-link btn-block text-left collapsed"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapseSuccess"
+                        aria-expanded="false"
+                        aria-controls="collapseSuccess"
+                      >
+                        <h4><span class="badge badge-success">测网成功相关配置</span></h4>
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="collapseSuccess" class="collapse" aria-labelledby="headingSuccess" data-parent="#accordionOri">
+                    <div class="card-body">
+                      ${success_btns_dom}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="headingUnable">
+                    <h2 class="mb-0">
+                      <button
+                        class="btn btn-link btn-block text-left collapsed"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapseUnable"
+                        aria-expanded="false"
+                        aria-controls="collapseUnable"
+                      >
+                        <h4><span class="badge badge-warning">无法调试相关配置</span></h4>
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="collapseUnable" class="collapse" aria-labelledby="headingUnable" data-parent="#accordionOri">
+                    <div class="card-body">
+                      ${unable_btns_dom}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="headingTaskInfo">
+                    <h2 class="mb-0">
+                      <button
+                        class="btn btn-link btn-block text-left collapsed"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapseTaskInfo"
+                        aria-expanded="false"
+                        aria-controls="collapseTaskInfo"
+                      >
+                        <h4><span class="badge badge-info">任务详情相关配置</span></h4>
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="collapseTaskInfo" class="collapse" aria-labelledby="headingTaskInfo" data-parent="#accordionOri">
+                    <div class="card-body">
+                      ${TaskInfo_btns_dom}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" id="add_success_btn_ori">新增测网通过按钮</button>
+              <button type="button" class="btn btn-warning" id="add_unable_btn_ori">新增无法调试按钮</button>
+              <button type="button" class="btn btn-info" id="add_task_info_btn_ori">新增任务详情按钮</button>
+              <button type="button" class="btn btn-primary" id="save_task_edit_config_ori">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+      document.body.appendChild(tempDiv);
+    }
+    // 由按钮进行调用
+    const show_pro_modal = document.getElementById('show_pro_modal');
+    show_pro_modal.onclick = function () {
+      // 构建 成功按钮配置DOM 失败按钮配置DOM
+      let success_btns_dom = create_task_edit_btns_dom(
+        network_Task_Pro_config_Obj_OriX.success_btn_text_options,
+        'Success'
+      );
+      let unable_btns_dom = create_task_edit_btns_dom(
+        network_Task_Pro_config_Obj_OriX.unable_btn_title_options,
+        'Unable'
+      );
+      let TaskInfo_btns_dom = create_task_edit_btns_dom(
+        network_Task_Pro_config_Obj_OriX.task_info_btns_options,
+        'TaskInfo'
+      );
+      create_task_edit_config_modal_dom(success_btns_dom, unable_btns_dom, TaskInfo_btns_dom);
+      $('#Network_Task_Pro_modal_OriX').modal();
+      /*
+        新增部分功能
+      */
+      const new_btns_defalut_obj = {
+        task_edit: [
+          {
+            btn_title: null,
+            edit_area_text: null,
+            select_value: 100,
+          },
+        ],
+        task_info: [
+          {
+            btn_title: null,
+            edit_area_text: null,
+            need_time: false,
+          },
+        ],
+      };
+      // 增加测网报告相关按钮
+      const add_task_edit_btn = function (type) {
+        let temp_btns_dom = document.createElement('div');
+        switch (type) {
+          case 'Success':
+            temp_btns_dom.innerHTML = create_task_edit_btns_dom(new_btns_defalut_obj.task_edit, type);
+            $('#collapseSuccess').collapse();
+            document.querySelector('#collapseSuccess>.card-body').appendChild(temp_btns_dom);
+            break;
+          case 'Unable':
+            temp_btns_dom.innerHTML = create_task_edit_btns_dom(new_btns_defalut_obj.task_edit, type);
+            $('#collapseUnable').collapse();
+            document.querySelector('#collapseUnable>.card-body').appendChild(temp_btns_dom);
+            break;
+          case 'TaskInfo':
+            temp_btns_dom.innerHTML = create_task_edit_btns_dom(new_btns_defalut_obj.task_info, type);
+            $('#collapseTaskInfo').collapse();
+            document.querySelector('#collapseTaskInfo>.card-body').appendChild(temp_btns_dom);
+          default:
+            break;
+        }
+      };
+      // 新增通过按钮
+      document.getElementById('add_success_btn_ori').onclick = () => {
+        add_task_edit_btn('Success');
+      };
+      // 新增无法调试按钮
+      document.getElementById('add_unable_btn_ori').onclick = () => {
+        add_task_edit_btn('Unable');
+      };
+      document.getElementById('add_task_info_btn_ori').onclick = () => {
+        add_task_edit_btn('TaskInfo');
+      };
+      // TODO:4.保存按钮 功能
+      document.getElementById('save_task_edit_config_ori').onclick = () => {
+        save_netWork_to_obj();
+      };
+    };
+    function save_netWork_to_obj() {
+      let collapseArr = ['#collapseSuccess>.card-body', '#collapseUnable>.card-body', '#collapseTaskInfo>.card-body'];
+      // 读取成功配置
+      let success_config = [];
+      let success_card_body = document.querySelector(collapseArr[0]);
+      let success_btn_titles = success_card_body.getElementsByClassName('btns_name_ori');
+      let success_area_texts = success_card_body.getElementsByClassName('edit_area_text_ori');
+      let success_is_usings = success_card_body.getElementsByClassName('btns_is_using_ori');
+      for (let index = 0; index < success_is_usings.length; index++) {
+        const using = success_is_usings[index].checked;
+        if (using) {
+          let btn_title = success_btn_titles[index].value;
+          console.log(btn_title);
+          let edit_area_text = success_area_texts[index].value;
+          console.log(edit_area_text);
+          if (btn_title && edit_area_text) {
+            let temp_obj = {
+              btn_title,
+              edit_area_text,
+              select_value: 0,
+            };
+            success_config.push(temp_obj);
+            console.log(success_config);
+          }
+        }
+      }
+    }
+  </script>
+</html>

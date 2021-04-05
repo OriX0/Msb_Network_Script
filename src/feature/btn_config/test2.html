@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./Msb_Boss_location/测网任务_files/bootstrap.min.css" />
+    <script src="./Msb_Boss_location/测网任务_files/jquery.min.js.下载"></script>
+    <script src="./Msb_Boss_location/测网任务_files/bootstrap.min.js.下载"></script>
+  </head>
+  <body>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary cyxy-trs-source"
+      data-toggle="modal"
+      data-target="#success_btns_option_model2"
+    >
+      Extra large modal
+      <span class="cyxy-trs-target">超大型模态</span>
+    </button>
+    <div
+      class="modal fade"
+      id="success_btns_option_model2"
+      tabindex="-1"
+      aria-labelledby="success_btns_option_model"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title h4" id="success_btns_option_modelLabel">
+              按钮配置
+              <span class="badge badge-success">通过</span>
+              <button
+                type="button"
+                class="btn btn-info"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="名字:按钮名字  内容:测网报告编辑部分的内容  单选框:是否启用,不启用则会删除"
+              >
+                看配置说明
+              </button>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="input-group col-lg-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">名字</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                  class="btns_name_success"
+                  value="客户端通过"
+                />
+              </div>
+              <div class="input-group col-lg-7">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">内容</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                  class="edit_area_text_success"
+                  value="测网通过，客户端,摄像头，扬声器，麦克风，设备正常。"
+                />
+              </div>
+              <div class="input-group col-lg-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input
+                      type="checkbox"
+                      aria-label="Checkbox for following text input"
+                      class="btns_is_using_success"
+                    />
+                  </div>
+                </div>
+                <input type="text" class="form-control" value="启用?" />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary">保存</button>
+          </div>
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button
+                    class="btn btn-link btn-block text-left"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    Collapsible Group Item #1
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the
+                  <code>.show</code>
+                  class.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button
+                    class="btn btn-link btn-block text-left collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                  >
+                    Collapsible Group Item #2
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                  Some placeholder content for the second accordion panel. This panel is hidden by default.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <button
+                    class="btn btn-link btn-block text-left collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    Collapsible Group Item #3
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                  And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by
+                  default.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // 成功部分配置
+    const success_btn_text_options = [
+      {
+        btn_title: '客户端通过',
+        edit_area_text: `测网通过,客户端,摄像头,扬声器,麦克风,设备正常。`,
+        select_value: 0,
+      },
+      {
+        btn_title: '浏览器通过',
+        edit_area_text: ` 测网通过,浏览器,摄像头,扬声器,麦克风,设备正常。`,
+        select_value: 0,
+      },
+      {
+        btn_title: '监课通过',
+        edit_area_text: '监课显示,师生已上课,摄像头,麦克风、扬声器,设备正常 ',
+        select_value: 0,
+      },
+    ];
+    let success_btns_dom = '';
+    for (const item of success_btn_text_options) {
+      success_btns_dom += `
+        <div class="row" style="margin-bottom:10px;">
+          <div class="input-group col-lg-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">名字</span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              class="btns_name_success"
+              value=${item.btn_title}
+            />
+          </div>
+          <div class="input-group col-lg-5">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">内容</span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              class="edit_area_text_success"
+              value=${item.edit_area_text}
+            />
+          </div>
+          <div class="input-group col-lg-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  checked
+                  aria-label="Checkbox for following text input"
+                  class="btns_is_using_success"
+                />
+              </div>
+            </div>
+            <input type="text" class="form-control" value="启用?" />
+          </div>
+          <select class="netWork_Pro_config_select">
+              <option >选择测网结果</option>
+              <option value="0"  ${item.select_value == 0 ? 'selected' : ''}>测网通过</option>
+              <option value="23" ${item.select_value == 23 ? 'selected' : ''}>取消课程</option>
+              <option value="24" ${item.select_value == 24 ? 'selected' : ''}>无人接听</option>
+              <option value="25" ${item.select_value == 25 ? 'selected' : ''}>家长拒接</option>
+              <option value="26" ${item.select_value == 26 ? 'selected' : ''}>不能出席</option>
+              <option value="27" ${item.select_value == 27 ? 'selected' : ''}>拒绝调试</option>
+              <option value="28" ${item.select_value == 28 ? 'selected' : ''}>CC调试</option>
+              <option value="29" ${item.select_value == 29 ? 'selected' : ''}>其他</option>
+            </select>
+        </div>
+      `;
+    }
+    let success_modal_dom = `
+    <div
+      class="modal fade"
+      id="pro_btn_config_modal"
+      tabindex="-1"
+      aria-labelledby="pro_btn_config_modal"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title h4" id="pro_btn_config_modalLabel">
+              按钮配置
+              <button
+                type="button"
+                class="btn btn-info btn-sm"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="名字:按钮名字  内容:测网报告编辑部分的内容  单选框:是否启用,不启用则会删除  下拉框:选择测网不通过的原因或者测网通过"
+              >
+                配置说明
+              </button>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ${success_btns_dom}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="add_pro_btn_config">新增</button>
+            <button type="button" class="btn btn-primary" id="save_pro_config">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>   
+    `;
+    let tempDiv = document.createElement('div');
+    tempDiv.innerHTML = success_modal_dom;
+    document.body.appendChild(tempDiv);
+    function createOneRowOptionDom(type, options = { btn_title: '', edit_area_text: '', select_value: 0 }) {}
+  </script>
+</html>

@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         MSB-Network_Task_Pro
+// @name         MSB-Network_Task_Pro_location
 // @namespace    OriX
 // @version      1.2.2
 // @description  更改了一些布局 快速处理
@@ -10,7 +10,7 @@
 // ==/UserScript==
 /*
  * @LastEditors: OriX
- * @LastEditTime: 2021-04-05 16:24:20
+ * @LastEditTime: 2021-04-05 16:14:42
  * @Copyright (C) 2020 OriX. All rights reserved.
  */
 //----------配置部分 可调整(*^▽^*)----------
@@ -458,11 +458,7 @@ let conditional_query_section = {
       another_num,
       changeTime_num,
     } = oriDailyObj;
-    const reuslt_text = `${userName}领取量${
-      oriDailyObj.all_result_num
-    },通过${success_num},改约${changeTime_num},取消${cancel_num},未接或拒接${
-      dont_num + reject_num
-    },无法出席${noAttend_num},拒绝调试${refused_num},cc调试${cc_num},其他${another_num}`;
+    const reuslt_text = `${todayOri}\t${userName}\t${oriDailyObj.all_result_num}\t${success_num}\t${changeTime_num}\t${cancel_num}\t${dont_num}\t${reject_num}\t${noAttend_num}\t${refused_num}\t${cc_num}\t${another_num}`;
     oriDailyObj.result_t = reuslt_text;
     localStorage.setItem('oriDaily', JSON.stringify(oriDailyObj));
     if (!document.getElementById('ori_daily_list')) {
@@ -470,10 +466,6 @@ let conditional_query_section = {
       tempD.innerHTML = `
         <ul class="list-group col-3" id='ori_daily_list' style="position:fixed;right:20px;top:75px;">
           <li class="list-group-item ">${reuslt_text}</li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            领取
-            <span class="badge badge-primary ">${oriDailyObj.all_result_num}</span>
-          </li>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             通过
             <span class="badge badge-primary ">${success_num}</span>
@@ -487,8 +479,12 @@ let conditional_query_section = {
             <span class="badge badge-primary ">${cancel_num}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center">
-            未接或拒接
-            <span class="badge badge-primary ">${dont_num + reject_num}</span>
+            未接
+            <span class="badge badge-primary ">${dont_num}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            拒接
+            <span class="badge badge-primary ">${reject_num}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             不能出席
