@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../base_platform_location/测网任务_files/bootstrap.min.css" />
+    <script src="../../base_platform_location/测网任务_files/jquery.min.js.下载"></script>
+    <script src="../../base_platform_location/测网任务_files/bootstrap.min.js.下载"></script>
+  </head>
+  <body>
+    <button id="show_config_assigned_modal" type="button" class="btn btn-primary cyxy-trs-source" data-toggle="modal">
+      <span class="cyxy-trs-target">配置本次指派</span>
+    </button>
+    <input type="checkbox" />
+  </body>
+  <script>
+    const showModalBtn = document.getElementById('show_config_assigned_modal');
+    const userInfoText = {
+      '杭州IT-沈涟桥': '3349621',
+      '杭州IT-曾星': '3383674',
+      '杭州IT-李豪卓': '3413904',
+      '杭州IT-洪学智': '3413909',
+      '杭州IT-韩雨雷': '3609277',
+      '杭州IT-郑李豪': '3609891',
+      '杭州IT-刘柏汕': '3632265',
+      '杭州IT-汪豪': '3632516',
+      '杭州IT-张文辉': '3661512',
+      '杭州IT-张宇': '3753625',
+      '杭州IT-滕威': '3753628',
+      '杭州IT-徐星荣': '3783805',
+      '杭州IT-陈至秦': '3916555',
+      '杭州IT-韩威杰': '3940088',
+      '杭州IT-郑晨晓': '3962121',
+      '杭州IT-盛浩鹏': '4037638',
+      '杭州IT-李子轩': '4146637',
+      '杭州IT-王超逸': '4330599',
+      '杭州IT-于晓峰': '4370364',
+      '杭州IT-王玉婷': '5104438',
+      '杭州IT-秦薇薇': '5104443',
+      '课前-刘英杰IT': '956223',
+      '课前-闫天昊IT': '1007869',
+      '课前-周明轩IT': '1150443',
+      '课前-冯强强IT': '1315968',
+      '课前-马浩IT': '1315973',
+      '课前-王召IT': '1634345',
+      '课前-鲍文杰IT': '1650019',
+      '课前-乔霓IT': '1918684',
+      '课前-马瑞杰IT': '1948272',
+      '课前-卫松IT': '1961752',
+      '课前-颜文强IT': '2579091',
+      '课前-何紫涵IT': '3124247',
+    };
+    // 基于 userInfoObj 创建输入组 单选框 dom
+    function create_check_input_dom(userInfoObj, userIdList) {
+      console.log(typeof userIdList);
+      let temp_dom = '';
+      Object.keys(userInfoObj).forEach((userName, index) => {
+        if (index % 2 == 0) {
+          temp_dom += `
+          </div>
+          <div class="row" style="margin-bottom:10px;">
+            <div class="input-group col-6">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="checkbox" class='assigned_user_checkout' data-userId=${userInfoObj[userName]} ${
+            userIdList.includes(userInfoObj[userName]) ? 'checked' : ''
+          }>
+                </div>
+              </div>
+              <input type="text" class="form-control" aria-label="Text input with checkbox" value=${userName}>
+            </div>
+          `;
+        } else {
+          temp_dom += `
+            <div class="input-group col-6">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="checkbox" class='assigned_user_checkout' data-userId=${userInfoObj[userName]} ${
+            userIdList.includes(userInfoObj[userName]) ? 'checked' : ''
+          }>
+                </div>
+              </div>
+              <input type="text" class="form-control" value=${userName} >
+            </div>
+        `;
+        }
+      });
+      return temp_dom;
+    }
+    // 构建模态框DOM
+    function create_assigned_config_modal_dom(input_dom) {
+      let tempDiv = document.createElement('div');
+      tempDiv.innerHTML = `
+      <div
+        class="modal fade"
+        id="autoAssignedModal_Orix"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title h5" id="autoAssignedModal_OrixLabel">
+                配置本次指派
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body"id="ori_task_edit_modal_body">
+              <div class="accordion" id="accordionOri">
+                ${input_dom}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="save_thisTime_assigned_config_ori" data-dismiss="modal">测试</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+      document.body.appendChild(tempDiv);
+    }
+
+    showModalBtn.onclick = function () {
+      const lastTimeUserIdList = JSON.parse(localStorage.getItem('thisTimeUserIdList')) || [];
+      console.log('lastTimeUserIdList', lastTimeUserIdList);
+      // 创建模态框的DOM
+      const create_input_dom = create_check_input_dom(userInfoText, lastTimeUserIdList);
+      create_assigned_config_modal_dom(create_input_dom);
+      // 显示模态框
+      $('#autoAssignedModal_Orix').modal();
+      // 获取所有的checkbox
+      let check_boxs = document.getElementsByClassName('assigned_user_checkout');
+      // 给所有的checkbox加上事件
+      $('.assigned_user_checkout').each(function () {
+        $(this).on('change', function () {
+          var thisCK = $(this).prop('checked');
+          $(this).attr('checked', thisCK);
+        });
+      });
+      // 保存按钮
+      const save_thisTime_btn = document.getElementById('save_thisTime_assigned_config_ori');
+      // 保存事件
+      save_thisTime_btn.onclick = function () {
+        const thisTimeUserIdList = [];
+        for (const checkBox of check_boxs) {
+          let checked = checkBox.getAttribute('checked') || null;
+          // 如果存在 则保存
+          if (checked) {
+            let userId = checkBox.getAttribute('data-userId');
+            thisTimeUserIdList.push(userId);
+          }
+        }
+        localStorage.setItem('thisTimeUserIdList', JSON.stringify(thisTimeUserIdList));
+      };
+    };
+  </script>
+</html>
